@@ -21,7 +21,7 @@
 			break;
 		}
 		case 'contact':{
-			require_once "includes/core/controllers/controller_contact.php";
+			require_once "includes/core/controllers/controller_section.php";
 			break;
 		}
 		default:{

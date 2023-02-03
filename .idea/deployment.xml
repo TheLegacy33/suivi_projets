@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="suisvi_projets">
+    <serverData>
+      <paths name="suisvi_projets">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="suivi_projets" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

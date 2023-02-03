@@ -1,7 +1,7 @@
 <?php
 
-	require_once "includes/core/models/bdd.php";
-	require_once "includes/core/models/Civilite.php";
+	require_once "includes/core/models/BDD.php";
+	require_once "includes/core/models/Classes/Civilite.php";
 
 	//Fonction qui exécute le SELECT ... FROM civilite et renvoie le résultat sous la forme attendue
 	function getAllCivilites(): array{

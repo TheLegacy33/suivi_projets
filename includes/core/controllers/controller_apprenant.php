@@ -2,11 +2,11 @@
 	
 	switch ($action){
 		case 'list':{
-			require_once "includes/core/models/daoContacts.php";
+			require_once "includes/core/models/DAO/daoContacts.php";
 
 			$lesContacts = getAllContacts();
 
-			require_once "includes/core/views/liste_contacts.phtml";
+			require_once "includes/core/views/liste_sections.phtml";
 			break;
 		}
 		case 'view':{
@@ -22,9 +22,9 @@
 			break;
 		}
 		case 'add':{
-			require_once "includes/core/models/daoContacts.php";
-			require_once "includes/core/models/daoCivilites.php";
-			require_once "includes/core/models/daoCpVilles.php";
+			require_once "includes/core/models/DAO/daoContacts.php";
+			require_once "includes/core/models/DAO/daoCivilites.php";
+			require_once "includes/core/models/DAO/daoCpVilles.php";
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
 				$unePersonne = new Personne();
@@ -54,7 +54,7 @@
 
 			$lesCpVilles = getAllCpVilles();
 
-			require_once "includes/core/views/form_contact.phtml";
+			require_once "includes/core/views/form_section.phtml";
 			break;
 		}
 		default:{

@@ -1,7 +1,7 @@
 <?php
 
-	require_once "includes/core/models/bdd.php";
-	require_once "includes/core/models/Cpville.php";
+	require_once "includes/core/models/BDD.php";
+	require_once "includes/core/models/Classes/Cpville.php";
 
 	//Fonction qui exécute le SELECT ... FROM cp_ville et renvoie le résultat sous la forme attendue
 	function getAllCpVilles(): array{

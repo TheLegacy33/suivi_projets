@@ -1,7 +1,7 @@
 <?php
 
-	require_once "includes/core/models/bdd.php";
-	require_once "includes/core/models/Personne.php";
+	require_once "includes/core/models/BDD.php";
+	require_once "includes/core/models/DAO/Personne.php";
 
 	//Fonction qui exécute le SELECT ... FROM contacts et renvoie le résultat sous la forme attendue
 	function getAllContacts(): array{
