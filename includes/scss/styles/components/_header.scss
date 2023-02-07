@@ -1,0 +1,21 @@
+main{
+	> header{
+		display: grid;
+		grid-template-columns: 140px 1fr;
+		align-items: center;
+		> div {
+			border: none;
+			margin: 0;
+			text-align: center;
+
+			> p {
+				font-size: 3em;
+				font-weight: bold;
+				text-transform: uppercase;
+				padding-right: 120px;
+			}
+		}
+	}
+
+
+}

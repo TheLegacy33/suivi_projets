@@ -1,0 +1,50 @@
+<?php
+	ini_set('display_errors', 'on');
+	require_once "includes/core/globals.php";
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<?php require "includes/partials/page_head.phtml"; ?>
+</head>
+<body>
+	<main>
+		<header>
+				<?php require "includes/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content">
+			<a href="index.php?page=promotion&action=add">Ajouter une promotion</a>
+			<table>
+				<thead>
+					<th>Nom</th>
+					<th class="actions" colspan="2">Actions</th>
+				</thead>
+				<tbody>
+					<?php
+						$script = '';
+						foreach ($lesPromotions as $unePromotion){
+							$script .= '<tr>';
+							$script .= '<td><a href="index.php?page=promotion&action=view&id='.$unePromotion->getId().'">'.$unePromotion->getNom().'</a></td>';
+							$script .= '<td class="actions">';
+							$script .= '<a href="index.php?page=promotion&action=edit&id='.$unePromotion->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+							$script .= '<a data-action="deletelink" href="index.php?page=promotion&action=delete&id='.$unePromotion->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							$script .= '<a href="index.php?page=apprenant&action=list&idpromo='.$unePromotion->getId().'"><img src="./public/medias/apprenants_blue.png" alt="voir les apprenants"></a>';
+							$script .= '</td>';
+							$script .= '</tr>';
+						}
+						print($script);
+					?>
+				</tbody>
+
+			</table>
+		</section>
+		<footer>
+			<?php require_once "includes/partials/footer.phtml"; ?>
+		</footer>
+	</main>
+	<script src="./public/scripts/common_functions.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+table{
+	border-collapse: collapse;
+	width: 800px;
+	margin: 10px auto;
+	border: solid 1px black;
+
+	thead{
+		tr{
+			th{
+				background-color: black;
+				color: white;
+				padding-top: 5px;
+				padding-bottom: 5px;
+
+				&:first-child{
+
+				}
+
+				&.actions{
+					width: 20%;
+				}
+			}
+		}
+	}
+
+	tbody{
+		tr{
+			border: solid 1px black;
+			td{
+				border: solid 1px black;
+				padding: .2rem;
+				&.actions{
+					border: none;
+					display: flex;
+					align-items: center;
+					justify-content: space-around;
+					padding-top: 0.5rem;
+					img{
+						width: 2rem;
+						height: auto;
+					}
+				}
+			}
+			&:hover{
+				background-color: #eeeeee;
+			}
+		}
+	}
+}

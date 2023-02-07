@@ -1,5 +1,5 @@
 <?php
-	require_once "Civilite.php";
+	require_once "Promotion.php";
 	require_once "Cpville.php";
 
 	class Personne{
@@ -7,12 +7,12 @@
 		private string $nom, $prenom, $numRue, $nomRue, $complementRue;
 		private int $taille, $poids;
 		private ?DateTime $dateNaissance;
-		private ?Civilite $civilite;
+		private ?Promotion $civilite;
 		private ?Cpville $cpVille;
 
 		public function __construct(string $nom = '', string $prenom = '', ?DateTime $dateNaissance = null,
-			string $numRue = '', string $nomRue = '', ?Civilite $civilite = null, ?Cpville $cpVille = null,
-			int $taille = 0, int $poids = 0, string $complementRue = ''){
+									string $numRue = '', string $nomRue = '', ?Promotion $civilite = null, ?Cpville $cpVille = null,
+									int    $taille = 0, int $poids = 0, string $complementRue = ''){
 				$this->nom = $nom;
 				$this->prenom = $prenom;
 
@@ -31,7 +31,7 @@
 				$this->poids = $poids;
 				$this->complementRue = $complementRue;
 
-				$this->civilite = $civilite ?? new Civilite('', '');
+				$this->civilite = $civilite ?? new Promotion('', '');
 				$this->cpVille = $cpVille ?? new Cpville('', '');
 		}
 
@@ -107,11 +107,11 @@
 			$this->poids = $poids;
 		}
 
-		public function getCivilite(): Civilite{
+		public function getCivilite(): Promotion{
 			return $this->civilite;
 		}
 
-		public function setCivilite(Civilite $nom): void{
+		public function setCivilite(Promotion $nom): void{
 			$this->civilite = $civilite;
 		}
 

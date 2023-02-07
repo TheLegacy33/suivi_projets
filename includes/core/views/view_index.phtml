@@ -1,0 +1,47 @@
+<?php
+	ini_set('display_errors', 'on');
+	require_once "includes/core/globals.php";
+?>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<?php require "includes/partials/page_head.phtml"; ?>
+	</head>
+	<body>
+		<main>
+			<header>
+				<?php require "includes/partials/page_header.phtml"; ?>
+			</header>
+			<nav>
+				<?php require_once "includes/partials/navbar.phtml"; ?>
+			</nav>
+			<section id="content" class="vertical-center">
+				<form id="frmAuth" action="" method="post">
+					<header>Connexion</header>
+					<div class="field">
+						<label for="ttIdentifiant">Identifiant :</label>
+						<div>
+							<input value="" type="text" name="ttIdentifiant" id="ttIdentifiant" placeholder="Saisir l'identifiant" required/>
+							<span></span>
+						</div>
+					</div>
+					<div class="field">
+						<label for="ttPassword">Mot de passe :</label>
+						<div>
+							<input value="" type="password" name="ttPassword" id="ttPassword" placeholder="Saisir le mot de passe" required/>
+							<span></span>
+						</div>
+					</div>
+					<div class="actions">
+						<button class="btn btn-submit" type="submit" id="btValid">Valider</button>
+						<button class="btn btn-cancel" type="reset" id="btreset">Annuler</button>
+					</div>
+				</form>
+			</section>
+			<footer>
+				<?php require_once "includes/partials/footer.phtml"; ?>
+			</footer>
+		</main>
+		<script src="./public/scripts/common_functions.js"></script>
+	</body>
+</html>

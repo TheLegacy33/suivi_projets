@@ -1,0 +1,57 @@
+button {
+	height: 30px;
+	width: 140px;
+	margin: 2px;
+
+	&.btn{
+		white-space: nowrap;
+		font-size: 1.1em;
+		outline: none;
+		border: solid 1px #95999c;
+		border-radius: 5px;
+		box-shadow: 2px 2px 2px #343a40;
+		cursor: pointer;
+		padding: 0 5px;
+		font-weight: bold;
+
+		&.btn-submit{
+			background-color: #28a745;
+			border-color: #28a745;
+			color: white;
+
+			&[disabled]{
+				color: #777777;
+			}
+		}
+		&.btn-action{
+			background-color: #007bff;
+			border-color: #007bff;
+			color: white;
+		}
+
+		&.btn-info{
+			background-color: #bce8f1;
+			border-color: #bce8f1;
+			color: white;
+		}
+
+		&.btn-success{
+			background-color: #28a745;
+			border-color: #28a745;
+			color: white;
+		}
+
+		&.btn-cancel{
+			background-color: #dc3545;
+			border-color: #dc3545;
+			color: white;
+		}
+		&:active{
+			&:not([disabled]) {
+				border-width: 0;
+				box-shadow: inset 2px 2px 2px #343a40;
+			}
+		}
+	}
+}
+

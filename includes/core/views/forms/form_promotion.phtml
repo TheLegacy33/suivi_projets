@@ -1,0 +1,40 @@
+<?php
+	ini_set('display_errors', 'on');
+	require_once "includes/core/globals.php";
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<?php require "includes/partials/page_head.phtml"; ?>
+</head>
+<body>
+	<main>
+		<header>
+			<?php require "includes/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content">
+			<?= $message ?? '' ?>
+			<form action="" method="post">
+				<div class="field">
+					<label for="champNom">Nom : </label>
+					<div>
+						<input type="text" name="chNom" id="champNom" value="<?= $unePromotion->getNom() ?>" placeholder="Saisir le nom de la promotion" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="actions">
+					<button class="btn btn-submit" type="submit">Valider</button>
+					<button class="btn btn-cancel" type="reset">Réinitialiser</button>
+				</div>
+			</form>
+		</section>
+		<footer>
+			<?php require_once "includes/partials/footer.phtml"; ?>
+		</footer>
+	</main>
+	<script src="public/scripts/common_functions.js"></script>
+</body>
+</html>

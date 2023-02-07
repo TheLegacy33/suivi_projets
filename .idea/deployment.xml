@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="suisvi_projets">
+  <component name="PublishConfigData" serverName="Local or mounted folder">
     <serverData>
-      <paths name="suisvi_projets">
+      <paths name="Local or mounted folder">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="suivi_projets" />
+            <mapping local="$PROJECT_DIR$" web="localhost/suivi_projets" />
           </mappings>
         </serverdata>
       </paths>
