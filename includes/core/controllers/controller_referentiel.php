@@ -27,11 +27,11 @@
 			require_once "includes/core/models/DAO/DAOCpVille.php";
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
-				$unePersonne = new Personne();
+				$unePersonne = new Apprenant();
 				
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$unePersonne = new Personne(
+				$unePersonne = new Apprenant(
 					$_POST['chNom'],
 					$_POST['chPrenom'],
 					date_create($_POST['chDateNaissance']),

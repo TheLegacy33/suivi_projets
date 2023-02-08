@@ -2,7 +2,7 @@
 	require_once "Promotion.php";
 	require_once "Cpville.php";
 
-	class Personne{
+	class Apprenant{
 		private int $id;
 		private string $nom, $prenom, $numRue, $nomRue, $complementRue;
 		private int $taille, $poids;

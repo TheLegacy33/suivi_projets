@@ -3,7 +3,6 @@ class Promotion{
 	private int $id;
 	private string $nom;
 
-	private array $apprenants;
 
 	public function __construct(string $nom = ''){
 		$this->nom = $nom;
@@ -24,13 +23,5 @@ class Promotion{
 
 	public function setNom(string $nom): void{
 		$this->nom = $nom;
-	}
-
-	public function getApprenants(): array{
-		return $this->apprenants;
-	}
-
-	public function setApprenants(array $apprenants): void{
-		$this->apprenants = $apprenants;
 	}
 }

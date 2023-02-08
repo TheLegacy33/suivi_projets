@@ -1,12 +1,12 @@
 <?php
-	
+	require_once "includes/core/models/DAO/DAOApprenant.php";
+
 	switch ($action){
 		case 'list':{
-			require_once "includes/core/models/DAO/DAOPromotion.php";
 
-			$lesContacts = getAllContacts();
+			$lesApprenants = DAOApprenant::getAll();
 
-			require_once "includes/core/views/liste_promotions.phtml";
+			require_once "includes/core/views/lists/liste_apprenants.phtml";
 			break;
 		}
 		case 'view':{
@@ -22,16 +22,15 @@
 			break;
 		}
 		case 'add':{
-			require_once "includes/core/models/DAO/DAOPromotion.php";
 			require_once "includes/core/models/DAO/DAOCivilite.php";
 			require_once "includes/core/models/DAO/DAOCpVille.php";
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
-				$unePersonne = new Personne();
+				$unePersonne = new Apprenant();
 				
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$unePersonne = new Personne(
+				$unePersonne = new Apprenant(
 					$_POST['chNom'],
 					$_POST['chPrenom'],
 					date_create($_POST['chDateNaissance']),
