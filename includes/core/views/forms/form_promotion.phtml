@@ -1,7 +1,3 @@
-<?php
-	ini_set('display_errors', 'on');
-	require_once "includes/core/globals.php";
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

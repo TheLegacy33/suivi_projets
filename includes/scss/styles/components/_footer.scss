@@ -9,5 +9,12 @@ main {
 		font-style: italic;
 		border-radius: 5px;
 		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10rem;
+		.footer-link {
+			color: white;
+		}
 	}
 }

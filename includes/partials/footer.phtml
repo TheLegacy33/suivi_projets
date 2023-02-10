@@ -1,1 +1,6 @@
 <span>Copyright © <?= date('Y') ?> @ <?= ECOLE ?></span>
+<?php if (!(Session::getActiveSession()->getUser())): ?>
+	<a class="footer-link" href="index.php?page=user&action=login">Se connecter</a>
+<?php else: ?>
+	<a class="footer-link" href="index.php?page=user&action=logout">Se déconnecter</a>
+<?php endif; ?>
