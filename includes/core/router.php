@@ -21,6 +21,10 @@
 			require_once "includes/core/controllers/controller_user.php";
 			break;
 		}
+		case 'apprenant':{
+			require_once "includes/core/controllers/controller_apprenant.php";
+			break;
+		}
 		default:{
 			$action = 'view';
 			require_once "includes/core/controllers/controller_error.php";

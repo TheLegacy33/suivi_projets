@@ -7,69 +7,46 @@
 		public static function getAll(): array{
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "SELECT id 
+			$SQLQuery = "SELECT id_apprenant
 				FROM apprenant
 				ORDER BY nom";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
 			$SQLStmt->execute();
 
-			$listePromotions = array();
+			$listeApprenants = array();
 			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
-				$unePromotion = new Promotion($SQLRow['nom']);
+				$unApprenant = new Apprenant();
+				$unApprenant->setId($SQLRow['id_apprenant']);
 
-				$unePromotion->setId($SQLRow['id_promo']);
-
-				$listePromotions[] = $unePromotion;
+				$listeApprenants[] = $listeApprenants;
 			}
 
 			$SQLStmt->closeCursor();
 
-			return $listePromotions;
+			return $listeApprenants;
 		}
-
-		public static function insert(Promotion $newPromotion): bool {
-			// INSERT DANS LA BDD
+		public static function getAllByIdPromo(int $idPromo){
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "INSERT INTO promotion(nom)
-			VALUES (:nom)";
-
-			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
-
-			if (!$SQLStmt->execute()){
-				return false;
-			}else{
-				return true;
-			}
-		}
-
-		public static function delete(Promotion $promoToDelete): bool{
-			$conn = parent::getConnexion();
-
-			$SQLQuery = "DELETE FROM promotion
+			$SQLQuery = "SELECT id_apprenant
+				FROM apprenant
 				WHERE id_promo = :id";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':id', $promoToDelete->getId(), PDO::PARAM_INT);
-			return $SQLStmt->execute();
-		}
+			$SQLStmt->bindValue(':id', $idPromo, PDO::PARAM_INT);
+			$SQLStmt->execute();
+			$listeApprenants = array();
+			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
+				$unApprenant = new Apprenant();
+				$unApprenant->setId($SQLRow['id_apprenant']);
 
-		public static function update(Promotion $newPromotion): bool{
-			$conn = parent::getConnexion();
-
-			$SQLQuery = "UPDATE promotion SET nom = :nom WHERE id_promo = :id";
-
-			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':id', $newPromotion->getId(), PDO::PARAM_STR);
-
-			if (!$SQLStmt->execute()){
-				return false;
-			}else{
-				return true;
+				$listeApprenants[] = $listeApprenants;
 			}
+
+			$SQLStmt->closeCursor();
+
+			return $listeApprenants;
 		}
 
 		public static function findByName(string $nomPromotion): Promotion | bool{
@@ -115,6 +92,50 @@
 				$SQLStmt->closeCursor();
 
 				return $unePromotion;
+			}
+		}
+
+		public static function insert(Promotion $newPromotion): bool {
+			// INSERT DANS LA BDD
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "INSERT INTO promotion(nom)
+			VALUES (:nom)";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
+
+			if (!$SQLStmt->execute()){
+				return false;
+			}else{
+				return true;
+			}
+		}
+
+		public static function delete(Promotion $promoToDelete): bool{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "DELETE FROM promotion
+				WHERE id_promo = :id";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->bindValue(':id', $promoToDelete->getId(), PDO::PARAM_INT);
+			return $SQLStmt->execute();
+		}
+
+		public static function update(Promotion $newPromotion): bool{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "UPDATE promotion SET nom = :nom WHERE id_promo = :id";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':id', $newPromotion->getId(), PDO::PARAM_STR);
+
+			if (!$SQLStmt->execute()){
+				return false;
+			}else{
+				return true;
 			}
 		}
 	}

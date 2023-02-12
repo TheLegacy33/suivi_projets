@@ -111,8 +111,8 @@ form > div.field > div {
   width: 100%;
 }
 form > div.field > div > select {
-  min-width: 150px;
-  margin: 5px;
+  width: 100%;
+  margin-right: 15px;
 }
 form > div.field > div > input[type=text], form > div.field > div > input[type=date], form > div.field > div > input[type=password] {
   padding-left: 1rem;
@@ -212,6 +212,16 @@ table tbody tr td.actions img {
 }
 table tbody tr:hover {
   background-color: #eeeeee;
+}
+
+.promotion thead tr th:first-child {
+  width: 30%;
+}
+.promotion tbody tr td {
+  text-align: center;
+}
+.promotion tbody tr td:first-child {
+  text-align: left;
 }
 
 main > header {

@@ -1,0 +1,23 @@
+.promotion{
+	thead{
+		tr{
+			th{
+				//width: 15%;
+
+				&:first-child{
+					width: 30%
+				}
+			}
+		}
+	}
+	tbody {
+		tr{
+			td{
+				text-align: center;
+				&:first-child{
+					text-align: left;
+				}
+			}
+		}
+	}
+}

@@ -22,8 +22,6 @@
 			break;
 		}
 		case 'add':{
-			require_once "includes/core/models/DAO/DAOCivilite.php";
-			require_once "includes/core/models/DAO/DAOCpVille.php";
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
 				$unePersonne = new Apprenant();

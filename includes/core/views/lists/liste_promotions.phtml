@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<?php require "includes/partials/page_head.phtml"; ?>
+	<?php require "includes/core/views/partials/page_head.phtml"; ?>
 </head>
 <body>
 	<main>
 		<header>
-				<?php require "includes/partials/page_header.phtml"; ?>
+				<?php require "includes/core/views/partials/page_header.phtml"; ?>
 		</header>
 		<nav>
-			<?php require_once "includes/partials/navbar.phtml"; ?>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
 		</nav>
 		<section id="content">
 			<a href="index.php?page=promotion&action=add">Ajouter une promotion</a>
-			<table>
+			<table class="promotion">
 				<thead>
-					<th>Nom</th>
-					<th class="actions" colspan="2">Actions</th>
+					<tr>
+						<th>Nom</th>
+						<th>Date Début</th>
+						<th>Date Fin</th>
+						<th>Nb Apprenants</th>
+						<th class="actions" colspan="2">Actions</th>
+					</tr>
 				</thead>
 				<tbody>
 					<?php
@@ -24,6 +29,9 @@
 						foreach ($lesPromotions as $unePromotion){
 							$script .= '<tr>';
 							$script .= '<td><a href="index.php?page=promotion&action=view&id='.$unePromotion->getId().'">'.$unePromotion->getNom().'</a></td>';
+							$script .= '<td>'.$unePromotion->getDateDebut()->format('d/m/Y').'</td>';
+							$script .= '<td>'.$unePromotion->getDateFin()->format('d/m/Y').'</td>';
+							$script .= '<td>'.$unePromotion->getNbApprenants().'</td>';
 							$script .= '<td class="actions">';
 							$script .= '<a href="index.php?page=promotion&action=edit&id='.$unePromotion->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
 							$script .= '<a data-action="deletelink" href="index.php?page=promotion&action=delete&id='.$unePromotion->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
@@ -38,7 +46,7 @@
 			</table>
 		</section>
 		<footer>
-			<?php require_once "includes/partials/footer.phtml"; ?>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
 		</footer>
 	</main>
 	<script src="./public/scripts/common_functions.js"></script>

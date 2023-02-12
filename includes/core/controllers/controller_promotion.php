@@ -1,8 +1,6 @@
 <?php
 
 	require_once "includes/core/models/DAO/DAOPromotion.php";
-	//require_once "includes/core/models/DAO/DAOCivilite.php";
-	//require_once "includes/core/models/DAO/DAOCpVille.php";
 	switch ($action){
 		case 'list':{
 
@@ -20,12 +18,16 @@
 			$unePromotion = DAOPromotion::getById($id);
 			if (!empty($_POST)){
 				$unePromotion->setNom($_POST['chNom']);
+				$unePromotion->setDateDebut(date_create($_POST['chDateDebut']));
+				$unePromotion->setDateFin(date_create($_POST['chDateFin']));
+				$unePromotion->setTitre(DAOTitre::getById($_POST['cbTitre']));
 				if (DAOPromotion::update($unePromotion)){
 					header('Location: index.php?page=promotion&action=list');
 				}else{
 					$message = "Erreur d'enregistrement !";
 				}
 			}
+			$lesTitres = DAOTitre::getAll();
 			require_once "includes/core/views/forms/form_promotion.phtml";
 			break;
 		}
@@ -51,7 +53,10 @@
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
 				$unePromotion = new Promotion(
-					$_POST['chNom']
+					$_POST['chNom'],
+					date_create($_POST['chDateDebut']),
+					date_create($_POST['chDateFin']),
+					DAOTitre::getById($_POST['cbTitre'])
 				);
 
 				if (DAOPromotion::findByName($unePromotion->getNom())){
@@ -64,6 +69,8 @@
 					}
 				}
 			}
+			$lesTitres = DAOTitre::getAll();
+
 			require_once "includes/core/views/forms/form_promotion.phtml";
 			break;
 		}

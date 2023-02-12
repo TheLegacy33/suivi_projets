@@ -73,7 +73,7 @@ CREATE TABLE titre(
         id_referentiel Int NOT NULL
 	,CONSTRAINT titre_PK PRIMARY KEY (id_titre)
 
-	,CONSTRAINT titre_rerentiel_FK FOREIGN KEY (id_referentiel) REFERENCES rerentiel(id_referentiel)
+	,CONSTRAINT titre_rerentiel_FK FOREIGN KEY (id_referentiel) REFERENCES referentiel (id_referentiel)
 )ENGINE=InnoDB;
 
 #------------------------------------------------------------
@@ -171,7 +171,7 @@ CREATE TABLE bloc_competence(
         id_referentiel  Int NOT NULL
 	,CONSTRAINT bloc_competence_PK PRIMARY KEY (id_bloc)
 
-	,CONSTRAINT bloc_competence_rerentiel_FK FOREIGN KEY (id_referentiel) REFERENCES rerentiel(id_referentiel)
+	,CONSTRAINT bloc_competence_rerentiel_FK FOREIGN KEY (id_referentiel) REFERENCES referentiel (id_referentiel)
 )ENGINE=InnoDB;
 
 

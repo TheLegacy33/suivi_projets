@@ -2,11 +2,11 @@
 	
 	switch ($action){
 		case 'list':{
-			require_once "includes/core/models/DAO/DAOPromotion.php";
+			require_once "includes/core/models/DAO/DAOTitre.php";
 
-			$lesContacts = getAllContacts();
+			$lesTitres = getAll();
 
-			require_once "includes/core/views/liste_promotions.phtml";
+			require_once "includes/core/views/lists/liste_titres.phtml";
 			break;
 		}
 		case 'view':{
@@ -22,39 +22,28 @@
 			break;
 		}
 		case 'add':{
-			require_once "includes/core/models/DAO/DAOPromotion.php";
-			require_once "includes/core/models/DAO/DAOCivilite.php";
-			require_once "includes/core/models/DAO/DAOCpVille.php";
+			require_once "includes/core/models/DAO/DAOTitre.php";
+			require_once "includes/core/models/DAO/DAOReferentiel.php";
+
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
-				$unePersonne = new Apprenant();
+				$unTitre = new Titre();
 				
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$unePersonne = new Apprenant(
+				$unTitre = new Titre(
 					$_POST['chNom'],
-					$_POST['chPrenom'],
-					date_create($_POST['chDateNaissance']),
-					$_POST['chNumRue'],
-					$_POST['chNomRue'],
-					getCiviliteById($_POST['cbCivilite']),
-					getCpVilleById($_POST['chCpVille']),
-					intval($_POST['chTaille']),
-					intval($_POST['chPoids']),
-					$_POST['chComplementAdresse']
+					DAOReferentiel::getById($_POST['cbTitre'])
 				);
 
-				if (insertContact($unePersonne)){
+				if (DAOTitre::insert($unTitre)){
 					header('Location: ?page=contact&action=list');
 				}else{
 					$message = "Erreur d'enregistrement !";
 				}
 			}
-			$lesCivilites = getAllCivilites();
 
-			$lesCpVilles = getAllCpVilles();
-
-			require_once "includes/core/views/form_promotion.phtml";
+			require_once "includes/core/views/forms/form_titre.phtml";
 			break;
 		}
 		default:{

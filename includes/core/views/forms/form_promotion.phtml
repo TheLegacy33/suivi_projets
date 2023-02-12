@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<?php require "includes/partials/page_head.phtml"; ?>
+	<?php require "includes/core/views/partials/page_head.phtml"; ?>
 </head>
 <body>
 	<main>
 		<header>
-			<?php require "includes/partials/page_header.phtml"; ?>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
 		</header>
 		<nav>
-			<?php require_once "includes/partials/navbar.phtml"; ?>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
 		</nav>
 		<section id="content">
 			<?= $message ?? '' ?>
@@ -21,6 +21,40 @@
 						<span></span>
 					</div>
 				</div>
+				<div class="field">
+					<label for="champDateDebut">Date de début : </label>
+					<div>
+						<input type="date" name="chDateDebut" id="champDateDebut" value="<?= $unePromotion->getDateDebut()->format('Y-m-d') ?>" placeholder="Saisir la date de début de la promotion" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champDateFin">Date de fin : </label>
+					<div>
+						<input type="date" name="chDateFin" id="champDateFin" value="<?= $unePromotion->getDateFin()->format('Y-m-d') ?>" placeholder="Saisir la date de fin de la promotion" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champCbTitre">Titre préparé : </label>
+					<div>
+						<select name="cbTitre" id="champCbTitre" required>
+							<option value="0"> -- Sélectionner -- </option>
+							<?php
+								$script = '';
+								foreach ($lesTitres as $unTitre){
+									if ($unTitre->getId() == $unePromotion->getTitre()->getId()){
+										$script .= '<option value="'.$unTitre->getId().'" selected>'.$unTitre->getNom().'</option>';
+									}else{
+										$script .= '<option value="'.$unTitre->getId().'">'.$unTitre->getNom().'</option>';
+									}
+								}
+								print($script);
+							?>
+						</select>
+						<span></span>
+					</div>
+				</div>
 				<div class="actions">
 					<button class="btn btn-submit" type="submit">Valider</button>
 					<button class="btn btn-cancel" type="reset">Réinitialiser</button>
@@ -28,7 +62,7 @@
 			</form>
 		</section>
 		<footer>
-			<?php require_once "includes/partials/footer.phtml"; ?>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
 		</footer>
 	</main>
 	<script src="public/scripts/common_functions.js"></script>
