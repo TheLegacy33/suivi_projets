@@ -224,6 +224,16 @@ table tbody tr:hover {
   text-align: left;
 }
 
+.apprenants thead tr th:nth-child(1), .apprenants thead tr th:nth-child(2) {
+  width: 16%;
+}
+.apprenants tbody tr td {
+  text-align: center;
+}
+.apprenants tbody tr td:nth-child(1), .apprenants tbody tr td:nth-child(2) {
+  text-align: left;
+}
+
 main > header {
   display: grid;
   grid-template-columns: 140px 1fr;

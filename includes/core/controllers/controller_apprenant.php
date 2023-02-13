@@ -1,12 +1,18 @@
 <?php
 	require_once "includes/core/models/DAO/DAOApprenant.php";
+	require_once "includes/core/models/DAO/DAOPromotion.php";
 
 	switch ($action){
 		case 'list':{
+			$idPromo = $_GET['idpromo'] ?? 0;
+			if ($idPromo > 0){
+				$lesApprenants = DAOApprenant::getAllByIdPromo($idPromo);
+				require_once "includes/core/views/lists/liste_apprenants_by_promo.phtml";
+			}else{
+				$lesApprenants = DAOApprenant::getAll();
+				require_once "includes/core/views/lists/liste_apprenants.phtml";
+			}
 
-			$lesApprenants = DAOApprenant::getAll();
-
-			require_once "includes/core/views/lists/liste_apprenants.phtml";
 			break;
 		}
 		case 'view':{

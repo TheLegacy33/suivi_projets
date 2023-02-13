@@ -45,7 +45,7 @@
 			}else{
 				$SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC);
 				$unePromotion = new Promotion($SQLRow['nom'], date_create($SQLRow['date_debut']), date_create($SQLRow['date_fin']), DAOTitre::getById($SQLRow['id_titre']));
-				$unePromotion->setApprenants(DAOApprenant::getAllByIdPromo($SQLRow['id_promo']));
+//				$unePromotion->setApprenants(DAOApprenant::getAllByIdPromo($SQLRow['id_promo']));
 				$unePromotion->setId($SQLRow['id_promo']);
 
 				$SQLStmt->closeCursor();
@@ -69,7 +69,7 @@
 			}else{
 				$SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC);
 				$unePromotion = new Promotion($SQLRow['nom'], date_create($SQLRow['date_debut']), date_create($SQLRow['date_fin']), DAOTitre::getById($SQLRow['id_titre']));
-				$unePromotion->setApprenants(DAOApprenant::getAllByIdPromo($SQLRow['id_promo']));
+//				$unePromotion->setApprenants(DAOApprenant::getAllByIdPromo($SQLRow['id_promo']));
 				$unePromotion->setId($SQLRow['id_promo']);
 				$SQLStmt->closeCursor();
 

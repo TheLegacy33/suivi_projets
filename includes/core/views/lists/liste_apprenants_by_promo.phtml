@@ -18,7 +18,6 @@
 					<th>Nom</th>
 					<th>Prenom</th>
 					<th>Email</th>
-					<th>Promo</th>
 					<th colspan="2">Actions</th>
 				</thead>
 				<tbody>
@@ -29,7 +28,6 @@
 							$script .= '<td>'.$unApprenant->getNom().'</td>';
 							$script .= '<td>'.$unApprenant->getPrenom().'</td>';
 							$script .= '<td>'.$unApprenant->getEmail().'</td>';
-							$script .= '<td>'.$unApprenant->getPromotion()->getNom().'</td>';
 							$script .= '<td class="actions">';
 							$script .= '<a href="index.php?page=apprenant&action=edit&id='.$unApprenant->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
 							$script .= '<a data-action="deletelink" href="index.php?page=apprenant&action=delete&id='.$unApprenant->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';

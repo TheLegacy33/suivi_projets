@@ -4,12 +4,13 @@
 		private string $nom, $prenom, $email;
 
 		private int $idPromo, $idPersonne;
+		private Promotion $promotion;
 
-		public function __construct(string $nom = '', string $prenom = '', string $email = '', int $idPromo = 0, int $idPersonne = 0){
+		public function __construct(string $nom = '', string $prenom = '', string $email = '', Promotion $promotion = null, int $idPersonne = 0){
 			$this->nom = $nom;
 			$this->prenom = $prenom;
 			$this->email = $email;
-			$this->idPromo = $idPromo;
+			$this->promotion = $promotion;
 			$this->idPersonne = $idPersonne;
 		}
 
@@ -45,12 +46,12 @@
 			$this->email = $email;
 		}
 
-		public function getIdPromo(): int{
-			return $this->idPromo;
+		public function getPromotion(): Promotion{
+			return $this->promotion;
 		}
 
-		public function setIdPromo(int $idPromo): void{
-			$this->idPromo = $idPromo;
+		public function setPromotion(Promotion $promotion): void{
+			$this->promotion = $promotion;
 		}
 
 		public function getIdPersonne(): int{

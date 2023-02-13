@@ -7,7 +7,7 @@
 		public static function getAll(): array{
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "SELECT id_apprenant
+			$SQLQuery = "SELECT id_apprenant, nom, prenom, email, id_personne, id_promo
 				FROM apprenant
 				ORDER BY nom";
 
@@ -16,10 +16,10 @@
 
 			$listeApprenants = array();
 			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
-				$unApprenant = new Apprenant();
+				$unApprenant = new Apprenant($SQLRow['nom'], $SQLRow['prenom'], $SQLRow['email'], DAOPromotion::getById($SQLRow['id_promo']), $SQLRow['id_personne']);
 				$unApprenant->setId($SQLRow['id_apprenant']);
 
-				$listeApprenants[] = $listeApprenants;
+				$listeApprenants[] = $unApprenant;
 			}
 
 			$SQLStmt->closeCursor();
@@ -29,7 +29,7 @@
 		public static function getAllByIdPromo(int $idPromo){
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "SELECT id_apprenant
+			$SQLQuery = "SELECT id_apprenant, nom, prenom, email, id_personne
 				FROM apprenant
 				WHERE id_promo = :id";
 
@@ -38,10 +38,10 @@
 			$SQLStmt->execute();
 			$listeApprenants = array();
 			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
-				$unApprenant = new Apprenant();
+				$unApprenant = new Apprenant($SQLRow['nom'], $SQLRow['prenom'], $SQLRow['email'], DAOPromotion::getById($idPromo), $SQLRow['id_personne']);
 				$unApprenant->setId($SQLRow['id_apprenant']);
 
-				$listeApprenants[] = $listeApprenants;
+				$listeApprenants[] = $unApprenant;
 			}
 
 			$SQLStmt->closeCursor();
