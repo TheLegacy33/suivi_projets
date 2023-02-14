@@ -4,7 +4,7 @@
 		case 'list':{
 			require_once "includes/core/models/DAO/DAOTitre.php";
 
-			$lesTitres = getAll();
+			$lesTitres = DAOTitre::getAll();
 
 			require_once "includes/core/views/lists/liste_titres.phtml";
 			break;

@@ -11,70 +11,60 @@
 		<nav>
 			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
 		</nav>
-		<section id="content">
-			<form action="" method="post">
+		<section id="content" class="referentiel">
+			<article>
+				<header>
+					<h1><?= $unReferentiel->getLibelle() ?></h1>
+				</header>
 				<div>
-					<label for="chCbCivilite">Civilite</label>
-					<select name="cbCivilite" id="chCbCivilite">
-						<option value="0">-- Sélectionner --</option>
-						<?php
-							foreach ($lesCivilites as $civilite){
-								if ($civilite->getId() == $unePersonne->getCivilite()->getId()){
-									print('<option value="'.$civilite->getId().'" selected>'.$civilite->getLibelleLong().'</option>');
-								}else{
-									print('<option value="'.$civilite->getId().'">'.$civilite->getLibelleLong().'</option>');
-								}
-							}
-						?>
-					</select>
+					<h3>Validité : <?= $unReferentiel->getDateValidite()->format('d/m/Y') ?></h3>
+					<h3>RNCP : <?= $unReferentiel->getNumRncp() ?></h3>
 				</div>
-			<div>
-				<label for="champNom">Nom : </label><input type="text" name="chNom" id="champNom" value="<?= $unePersonne->getNom() ?>">
-			</div>
-			<div>
-				<label for="champPrenom">Prénom : </label><input type="text" name="chPrenom" id="champPrenom" value="<?= $unePersonne->getPrenom() ?>">
-			</div>
-			<div>
-				<label for="champDateNaissance">Date de naissance : </label><input type="date" name="chDateNaissance" id="champDateNaissance" value="<?= $unePersonne->getDateNaissance()->format('Y-m-d') ?>">
-			</div>
-			<div>
-				<div>
-					<label for="champNumRue">Numéro : </label><input type="text" name="chNumRue" id="champNumRue" value="<?= $unePersonne->getNumRue() ?>">
-					<label for="champNomRue">Rue : </label><input type="text" name="chNomRue" id="champNomRue" value="<?= $unePersonne->getNomRue() ?>">	
-				</div>
-				<div>
-					<label for="champComplementAdresse">Complément : </label><input type="text" name="chComplementAdresse" id="champComplementAdresse" value="<?= $unePersonne->getComplementRue() ?>">
-				</div>
-			</div>
-			<div>
-				<label for="champCpVille">Code postal / Ville : </label>
-				<select id="champCpVille" name="chCpVille">
-					<option value="0">-- Sélectionner --</option>
+				<section>
+					<h3>Détails : </h3>
+					<p>
+						<?= $unReferentiel->getDetails() ?>
+					</p>
+					<h3>Objectifs :</h3>
+					<p>
+						<?= $unReferentiel->getObjectifs() ?>
+					</p>
+					<h3>Activites :</h3>
+					<p>
+						<?= $unReferentiel->getActivites() ?>
+					</p>
+					<h3>Compétences :</h3>
+					<p>
+						<?= $unReferentiel->getCompetences() ?>
+					</p>
+					<h3>Modalités d'évaluation :</h3>
+					<p>
+						<?= $unReferentiel->getModaliteEvaluation() ?>
+					</p>
+				</section>
+				<section class="bloccompetences">
+					<h3>Blocs de compétences : </h3>
 					<?php
-						foreach ($lesCpVilles as $CpVille){
-							if ($CpVille->getId() == $unePersonne->getCpVille()->getId()){
-								print('<option value="'.$CpVille->getId().'" selected>'.$CpVille->getCodePostal().' '.$CpVille->getVille().'</option>');
-							}else{
-								print('<option value="'.$CpVille->getId().'">'.$CpVille->getCodePostal().' '.$CpVille->getVille().'</option>');
+						$script = '<ul>';
+						foreach ($unReferentiel->getBlocscompetences() as $blocscompetence){
+							$script .= '<li>'.$blocscompetence->getLibelle();
+
+							if (count($blocscompetence->getCompetences()) > 0){
+								$script .= '<ul>';
+								foreach ($blocscompetence->getCompetences() as $competence){
+									$script .= '<li>'.$competence->getLibelle().'</li>';
+								}
+								$script .= '</ul>';
 							}
-							
-						} 
+
+							$script .= '</li>';
+						}
+						$script .= '</ul>';
+						print($script);
 					?>
-				</select>
-			</div>
-			<div>
-				<label for="champTaille">Taille : </label>
-				<input type="number" name="chTaille" id="champTaille" value="<?= $unePersonne->getTaille() ?>">
-			</div>
-			<div>
-				<label for="champPoids">Poids : </label>
-				<input type="number" name="chPoids" id="champPoids" value="<?= $unePersonne->getPoids() ?>">
-			</div>
-			<div>
-				<button type="submit">Valider</button>
-				<button type="reset">Réinitialiser</button>
-			</div>
-			</form>
+				</section>
+			</article>
+
 		</section>
 		<?= $message ?? '' ?> 
 		<footer>

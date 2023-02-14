@@ -25,6 +25,14 @@
 			require_once "includes/core/controllers/controller_apprenant.php";
 			break;
 		}
+		case 'titre':{
+			require_once "includes/core/controllers/controller_titre.php";
+			break;
+		}
+		case 'referentiel':{
+			require_once "includes/core/controllers/controller_referentiel.php";
+			break;
+		}
 		default:{
 			$action = 'view';
 			require_once "includes/core/controllers/controller_error.php";

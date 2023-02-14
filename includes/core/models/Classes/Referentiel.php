@@ -4,6 +4,8 @@ class Referentiel{
 	private string $num_rncp, $libelle, $details, $objectifs, $activites, $competences, $modaliteEvaluation;
 	private DateTime $dateValidite;
 
+	private array $blocscompetences;
+
 	public function __construct(string $num_rncp = '', string $libelle = '', string $details = '', string $objectifs = '', string $activites = '', string $competences = '', string $modaliteEvaluation = '', DateTime $dateValidite = new DateTime('now')){
 		$this->num_rncp = $num_rncp;
 		$this->libelle = $libelle;
@@ -14,6 +16,7 @@ class Referentiel{
 		$this->modaliteEvaluation = $modaliteEvaluation;
 		$this->dateValidite = $dateValidite;
 		$this->id = 0;
+		$this->blocscompetences = array();
 	}
 
 	public function getId(): int{
@@ -86,5 +89,13 @@ class Referentiel{
 
 	public function setDateValidite(DateTime $dateValidite): void{
 		$this->dateValidite = $dateValidite;
+	}
+
+	public function getBlocscompetences(): array{
+		return $this->blocscompetences;
+	}
+
+	public function setBlocscompetences(array $blocscompetences): void{
+		$this->blocscompetences = $blocscompetences;
 	}
 }

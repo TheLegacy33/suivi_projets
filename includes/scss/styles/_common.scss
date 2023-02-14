@@ -21,7 +21,7 @@ a{
 }
 
 main{
-	> #content {
+	> section {
 		min-width: 600px;
 		overflow: hidden;
 		width: 98%;
@@ -48,7 +48,7 @@ main{
 
 		> article {
 			min-width: 400px;
-			height: 200px;
+			min-height: 200px;
 			display: flex;
 			flex-direction: column;
 			border-radius: 7px;
@@ -66,7 +66,7 @@ main{
 			}
 
 			> section {
-				height: 150px;
+				min-height: 150px;
 				padding: 5px;
 				text-align: justify;
 			}

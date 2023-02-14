@@ -1,16 +1,18 @@
 <?php
-	
+	require_once "includes/core/models/DAO/DAOCompetences.php";
+	require_once "includes/core/models/DAO/DAOBlocCompetences.php";
+	require_once "includes/core/models/DAO/DAOReferentiel.php";
+
 	switch ($action){
 		case 'list':{
-			require_once "includes/core/models/DAO/DAOPromotion.php";
+			$lesReferentiels = DAOReferentiel::getAll();
 
-			$lesContacts = getAllContacts();
-
-			require_once "includes/core/views/liste_promotions.phtml";
+			require_once "includes/core/views/lists/liste_referentiels.phtml";
 			break;
 		}
 		case 'view':{
-
+			$unReferentiel = DAOReferentiel::getById($_GET['id'] ?? 0);
+			require_once "includes/core/views/view_referentiel.phtml";
 			break;
 		}
 		case 'edit':{

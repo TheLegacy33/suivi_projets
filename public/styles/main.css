@@ -18,7 +18,7 @@ a:hover {
   color: orange;
 }
 
-main > #content {
+main > section {
   min-width: 600px;
   overflow: hidden;
   width: 98%;
@@ -32,25 +32,25 @@ main > #content {
   justify-content: center;
   padding: 1rem;
 }
-main > #content.flexcol {
+main > section.flexcol {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
-main > #content.vertical-center {
+main > section.vertical-center {
   align-items: center;
 }
-main > #content > article {
+main > section > article {
   min-width: 400px;
-  height: 200px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 7px;
   border: solid 1px black;
   margin: 5px 5px;
 }
-main > #content > article > header {
+main > section > article > header {
   height: 30px;
   line-height: 30px;
   background-color: #343a40;
@@ -59,12 +59,12 @@ main > #content > article > header {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-main > #content > article > section {
-  height: 150px;
+main > section > article > section {
+  min-height: 150px;
   padding: 5px;
   text-align: justify;
 }
-main > #content > article > footer {
+main > section > article > footer {
   height: 20px;
   text-align: right;
   font-size: 0.8em;
@@ -74,7 +74,7 @@ main > #content > article > footer {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-main > #content > div {
+main > section > div {
   display: block;
   width: 100%;
 }
@@ -232,6 +232,38 @@ table tbody tr:hover {
 }
 .apprenants tbody tr td:nth-child(1), .apprenants tbody tr td:nth-child(2) {
   text-align: left;
+}
+
+.titres thead tr th:first-child {
+  width: 60%;
+}
+.titres tbody tr td {
+  text-align: center;
+}
+.titres tbody tr td:first-child {
+  text-align: left;
+}
+
+.referentiel article header + div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 30px;
+  line-height: 30px;
+  background-color: #eeeeee;
+}
+.referentiel article section h3 {
+  margin: 10px 0;
+}
+.referentiel article section p {
+  margin-bottom: 20px;
+}
+.referentiel article section.bloccompetences > ul > li {
+  margin: 1rem 3rem;
+}
+.referentiel article section.bloccompetences > ul > li ul > li {
+  margin: 0.2rem 3rem;
 }
 
 main > header {

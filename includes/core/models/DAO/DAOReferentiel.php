@@ -93,7 +93,7 @@
 					date_create($SQLRow['date_validite'])
 				);
 				$unReferentiel->setId($SQLRow['id_referentiel']);
-
+				$unReferentiel->setBlocscompetences(DAOBlocCompetences::getByIdReferentiel($idReferentiel));
 				$SQLStmt->closeCursor();
 
 				return $unReferentiel;

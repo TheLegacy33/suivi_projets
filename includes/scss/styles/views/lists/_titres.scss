@@ -1,0 +1,23 @@
+.titres{
+	thead{
+		tr{
+			th{
+				//width: 15%;
+
+				&:first-child{
+					width: 60%
+				}
+			}
+		}
+	}
+	tbody {
+		tr{
+			td{
+				text-align: center;
+				&:first-child{
+					text-align: left;
+				}
+			}
+		}
+	}
+}
