@@ -1,7 +1,8 @@
 <?php
-	require_once "includes/core/models/DAO/DAOApprenant.php";
+	require_once "includes/core/models/DAO/DAOCompetences.php";
+	require_once "includes/core/models/DAO/DAOBlocCompetences.php";
 	require_once "includes/core/models/DAO/DAOPromotion.php";
-
+	require_once "includes/core/models/DAO/DAOApprenant.php";
 	switch ($action){
 		case 'list':{
 			$idPromo = $_GET['idpromo'] ?? 0;

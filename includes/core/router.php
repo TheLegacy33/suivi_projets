@@ -33,6 +33,10 @@
 			require_once "includes/core/controllers/controller_referentiel.php";
 			break;
 		}
+		case 'projet':{
+			require_once "includes/core/controllers/controller_projet.php";
+			break;
+		}
 		default:{
 			$action = 'view';
 			require_once "includes/core/controllers/controller_error.php";

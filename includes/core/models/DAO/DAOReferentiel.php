@@ -2,6 +2,7 @@
 
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Referentiel.php";
+	require_once "includes/core/models/Classes/Referentiel.php";
 
 	abstract class DAOReferentiel extends BDD{
 		public static function getAll(): array{

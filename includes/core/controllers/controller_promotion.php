@@ -1,5 +1,6 @@
 <?php
-
+	require_once "includes/core/models/DAO/DAOCompetences.php";
+	require_once "includes/core/models/DAO/DAOBlocCompetences.php";
 	require_once "includes/core/models/DAO/DAOPromotion.php";
 	switch ($action){
 		case 'list':{
