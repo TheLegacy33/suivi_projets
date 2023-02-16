@@ -1,7 +1,7 @@
 <?php
 	require_once "includes/core/models/DAO/BDD.php";
 	class DAOSuivi extends BDD{
-		public static function getAllByIdProjet(int $idProjet){
+		public static function getAllByIdProjet(int $idProjet): array{
 			$conn = parent::getConnexion();
 
 			$SQLQuery = "SELECT id_suivi, date, commentaire, id_intervenant

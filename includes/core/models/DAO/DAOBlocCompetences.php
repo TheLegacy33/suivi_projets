@@ -24,8 +24,6 @@
 				);
 				$unBloc->setId($SQLRow['id_bloc']);
 
-				$unBloc->setCompetences(DAOCompetences::getByIdBloc($unBloc->getId()));
-
 				$listeBlocCompetences[] = $unBloc;
 			}
 

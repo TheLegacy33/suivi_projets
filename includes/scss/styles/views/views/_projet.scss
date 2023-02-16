@@ -1,0 +1,38 @@
+.projet{
+	article{
+		min-width: 70%;
+		header{
+
+		}
+
+		header + div{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			min-height: 30px;
+			line-height: 30px;
+			background-color: #eeeeee;
+		}
+
+		section{
+			h3{
+				margin: 10px 0;
+			}
+			p{
+				min-height: 20px;
+				margin-bottom: 20px;
+			}
+
+			&.fonctionnalites, &.technologies, &.suivis{
+				> ul > li{
+					margin: 1rem 3rem;
+
+					ul > li{
+						margin: 0.2rem 3rem;
+					}
+				}
+			}
+		}
+	}
+}

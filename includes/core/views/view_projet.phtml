@@ -1,0 +1,104 @@
+<?php
+/**
+ * @var Projet $unProjet
+ * @var Fonctionnalite $uneFonctionnalite
+ * @var Technologie $uneTechnologie
+ * @var Suivi $unSuivi
+ * @var Apprenant $unApprenant
+ */
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<?php require "includes/core/views/partials/page_head.phtml"; ?>
+</head>
+<body>
+	<main>
+		<header>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content" class="projet">
+			<article>
+				<header>
+					<h1><?= $unProjet->getNom() ?></h1>
+				</header>
+				<div>
+					<h3>Auteur : <a title="Voir les projets de l'apprenant" href="index.php?page=projet&action=list&idapprenant=<?= $unApprenant->getId() ?>"><?= $unApprenant->getFullName() ?></a></h3>
+					<h3>Promotion : <a title="Voir la liste des apprenants de la promotion" href="index.php?page=apprenant&action=list&idpromo=<?= $unApprenant->getPromotion()->getId() ?>"><?= $unApprenant->getPromotion()->getNom() ?></a></h3>
+					<h3>Début : <?= $unProjet->getDateDebut()->format('d/m/Y') ?></h3>
+				</div>
+				<section>
+					<h3>Présentation : </h3>
+					<p>
+						<?= nl2br($unProjet->getPresentation()) ?>
+					</p>
+					<h3>Spécificités :</h3>
+					<p>
+						<?= nl2br($unProjet->getSpecificites()) ?>
+					</p>
+					<h3>Evolutions :</h3>
+					<p>
+						<?= nl2br($unProjet->getEvolutions()) ?>
+					</p>
+				</section>
+				<section class="fonctionnalites">
+					<h3>Fonctionnalités : </h3>
+					<?php
+						if ($unProjet->getNbFonctionnalites() == 0){
+							$script = "<p>Aucune fonctionnalité n'est actuellement associée à ce projet !</p>";
+						}else{
+							$script = '<ul>';
+							foreach ($unProjet->getFonctionnalites() as $uneFonctionnalite){
+								$script .= '<li>' . $uneFonctionnalite->getLibelle() . '</li>';
+							}
+							$script .= '</ul>';
+						}
+						print($script);
+					?>
+				</section>
+				<section class="technologies">
+					<h3>Technologies : </h3>
+					<?php
+						if ($unProjet->getNbTechnologies() == 0){
+							$script = "<p>Aucune technologie n'est actuellement associée à ce projet !</p>";
+						}else{
+							$script = '<ul>';
+							foreach ($unProjet->getTechnologies() as $uneTechnologie){
+								$script .= '<li>'.$uneTechnologie->getLibelle().'</li>';
+							}
+							$script .= '</ul>';
+						}
+						print($script);
+					?>
+				</section>
+				<section class="suivis">
+					<h3>Suivis : </h3>
+					<?php
+						if ($unProjet->getNbSuivis() == 0){
+							$script = "<p>Aucun suivi n'est actuellement associé à ce projet !</p>";
+						}else{
+							$script = '';
+							foreach ($unProjet->getSuivis() as $unSuivi){
+								$script .= '<section>';
+									$script .= '<header>'.$unSuivi->getDateSuivi().'</header>';
+									$script .= '<p>'.$unSuivi->getCommentaire().'</p>';
+								$script .= '</section>';
+							}
+						}
+						print($script);
+					?>
+				</section>
+			</article>
+
+		</section>
+		<?= $message ?? '' ?> 
+		<footer>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
+		</footer>
+	</main>
+	<script src="public/scripts/common_functions.js"></script>
+</body>
+</html>

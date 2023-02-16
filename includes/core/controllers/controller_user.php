@@ -1,4 +1,8 @@
 <?php
+	/**
+	 * @var User $unUser
+	 * @var string $action;
+	 */
 
 	switch ($action){
 		case 'login':{

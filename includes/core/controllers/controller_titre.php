@@ -1,5 +1,9 @@
 <?php
-	
+	/**
+	 * @var Titre $unTitre
+	 * @var string $action;
+	 */
+
 	switch ($action){
 		case 'list':{
 			require_once "includes/core/models/DAO/DAOTitre.php";

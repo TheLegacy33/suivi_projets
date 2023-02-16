@@ -11,8 +11,9 @@ img {
 }
 
 a{
+	color: #007bff;
 	&:link, &:visited{
-		color: black;
+		color: #007bff;
 		text-decoration: none;
 	}
 	&:hover {

@@ -10,8 +10,11 @@ img {
   border: none;
 }
 
+a {
+  color: #007bff;
+}
 a:link, a:visited {
-  color: black;
+  color: #007bff;
   text-decoration: none;
 }
 a:hover {
@@ -114,45 +117,45 @@ form > div.field > div > select {
   width: 100%;
   margin-right: 15px;
 }
-form > div.field > div > input[type=text], form > div.field > div > input[type=date], form > div.field > div > input[type=password] {
+form > div.field > div > input[type=text], form > div.field > div > input[type=date], form > div.field > div > input[type=password], form > div.field > div > textarea[type=text], form > div.field > div > textarea[type=date], form > div.field > div > textarea[type=password] {
   padding-left: 1rem;
   width: 100%;
   height: 30px;
 }
-form > div.field > div > input[type=checkbox], form > div.field > div > input[type=radio] {
+form > div.field > div > input[type=checkbox], form > div.field > div > input[type=radio], form > div.field > div > textarea[type=checkbox], form > div.field > div > textarea[type=radio] {
   height: 20px;
 }
-form > div.field > div > input:required + span {
+form > div.field > div > input:required + span, form > div.field > div > textarea:required + span {
   color: orange;
 }
-form > div.field > div > input:required + span::after {
+form > div.field > div > input:required + span::after, form > div.field > div > textarea:required + span::after {
   content: "*";
   display: block;
   width: 15px;
   height: 15px;
   text-align: center;
 }
-form > div.field > div > input:required:valid + span {
+form > div.field > div > input:required:valid + span, form > div.field > div > textarea:required:valid + span {
   color: green;
 }
-form > div.field > div > input:focus {
+form > div.field > div > input:required:focus, form > div.field > div > textarea:required:focus {
   border-color: transparent;
   color: green;
 }
-form > div.field > div > input:focus:valid + span {
+form > div.field > div > input:required:focus:valid + span, form > div.field > div > textarea:required:focus:valid + span {
   color: green;
 }
-form > div.field > div > input:focus:valid + span::after {
+form > div.field > div > input:required:focus:valid + span::after, form > div.field > div > textarea:required:focus:valid + span::after {
   content: "*";
   display: block;
   width: 15px;
   height: 15px;
   text-align: center;
 }
-form > div.field > div > input:focus:invalid + span {
+form > div.field > div > input:required:focus:invalid + span, form > div.field > div > textarea:required:focus:invalid + span {
   color: red;
 }
-form > div.field > div > input:focus:invalid + span::after {
+form > div.field > div > input:required:focus:invalid + span::after, form > div.field > div > textarea:required:focus:invalid + span::after {
   content: "*";
   display: block;
   width: 15px;
@@ -198,6 +201,14 @@ table tbody tr {
 table tbody tr td {
   border: solid 1px black;
   padding: 0.2rem;
+  vertical-align: middle;
+  line-height: 20px;
+}
+table tbody tr td img.mini {
+  max-height: 16px;
+  max-width: 16px;
+  vertical-align: middle;
+  margin: 0 15px;
 }
 table tbody tr td.actions {
   border: none;
@@ -244,6 +255,22 @@ table tbody tr:hover {
   text-align: left;
 }
 
+.projets {
+  min-width: 70%;
+}
+.projets thead tr th {
+  width: 12%;
+}
+.projets thead tr th:first-child {
+  width: 40%;
+}
+.projets tbody tr td {
+  text-align: center;
+}
+.projets tbody tr td:first-child {
+  text-align: left;
+}
+
 .referentiel article header + div {
   display: flex;
   flex-direction: row;
@@ -266,15 +293,46 @@ table tbody tr:hover {
   margin: 0.2rem 3rem;
 }
 
+.projet article {
+  min-width: 70%;
+}
+.projet article header + div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 30px;
+  line-height: 30px;
+  background-color: #eeeeee;
+}
+.projet article section h3 {
+  margin: 10px 0;
+}
+.projet article section p {
+  min-height: 20px;
+  margin-bottom: 20px;
+}
+.projet article section.fonctionnalites > ul > li, .projet article section.technologies > ul > li, .projet article section.suivis > ul > li {
+  margin: 1rem 3rem;
+}
+.projet article section.fonctionnalites > ul > li ul > li, .projet article section.technologies > ul > li ul > li, .projet article section.suivis > ul > li ul > li {
+  margin: 0.2rem 3rem;
+}
+
 main > header {
   display: grid;
   grid-template-columns: 140px 1fr;
   align-items: center;
+  height: 140px;
 }
 main > header > div {
   border: none;
   margin: 0;
   text-align: center;
+}
+main > header > div > img {
+  max-height: 120px;
+  max-width: 120px;
 }
 main > header > div > p {
   font-size: 3em;

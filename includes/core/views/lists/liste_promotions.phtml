@@ -28,14 +28,14 @@
 						$script = '';
 						foreach ($lesPromotions as $unePromotion){
 							$script .= '<tr>';
-							$script .= '<td><a href="index.php?page=promotion&action=view&id='.$unePromotion->getId().'">'.$unePromotion->getNom().'</a></td>';
+							$script .= '<td><a title="Voir" href="index.php?page=promotion&action=view&id='.$unePromotion->getId().'">'.$unePromotion->getNom().'</a></td>';
 							$script .= '<td>'.$unePromotion->getDateDebut()->format('d/m/Y').'</td>';
 							$script .= '<td>'.$unePromotion->getDateFin()->format('d/m/Y').'</td>';
 							$script .= '<td>'.$unePromotion->getNbApprenants().'</td>';
 							$script .= '<td class="actions">';
-							$script .= '<a href="index.php?page=promotion&action=edit&id='.$unePromotion->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-							$script .= '<a data-action="deletelink" href="index.php?page=promotion&action=delete&id='.$unePromotion->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
-							$script .= '<a href="index.php?page=apprenant&action=list&idpromo='.$unePromotion->getId().'"><img src="./public/medias/apprenants_blue.png" alt="voir les apprenants"></a>';
+							$script .= '<a title="Modifier" href="index.php?page=promotion&action=edit&id='.$unePromotion->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Supprimer" data-action="deletelink" href="index.php?page=promotion&action=delete&id='.$unePromotion->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Les Apprenants" href="index.php?page=apprenant&action=list&idpromo='.$unePromotion->getId().'"><img src="./public/medias/apprenants_blue.png" alt="voir les apprenants"></a>';
 							$script .= '</td>';
 							$script .= '</tr>';
 						}

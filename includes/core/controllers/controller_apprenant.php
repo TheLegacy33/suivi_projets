@@ -1,6 +1,9 @@
 <?php
-	require_once "includes/core/models/DAO/DAOCompetences.php";
-	require_once "includes/core/models/DAO/DAOBlocCompetences.php";
+	/**
+	 * @var Apprenant $unApprenant
+	 * @var string $action;
+	 */
+
 	require_once "includes/core/models/DAO/DAOPromotion.php";
 	require_once "includes/core/models/DAO/DAOApprenant.php";
 	switch ($action){
@@ -8,9 +11,16 @@
 			$idPromo = $_GET['idpromo'] ?? 0;
 			if ($idPromo > 0){
 				$lesApprenants = DAOApprenant::getAllByIdPromo($idPromo);
+
+				foreach ($lesApprenants as $unApprenant){
+					$unApprenant->setPromotion(DAOPromotion::getById($idPromo));
+				}
 				require_once "includes/core/views/lists/liste_apprenants_by_promo.phtml";
 			}else{
 				$lesApprenants = DAOApprenant::getAll();
+				foreach ($lesApprenants as $unApprenant){
+					$unApprenant->setPromotion(DAOPromotion::getById($idPromo));
+				}
 				require_once "includes/core/views/lists/liste_apprenants.phtml";
 			}
 

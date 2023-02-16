@@ -12,7 +12,7 @@
 				<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
 			</nav>
 			<section id="content">
-			<a href="index.php?page=contact&action=add">Ajouter un apprenant</a>
+			<a href="index.php?page=apprenant&action=add&idpromo=<?= $idPromo ?>">Ajouter un apprenant</a>
 			<table class="apprenants">
 				<thead>
 					<th>Nom</th>
@@ -29,9 +29,9 @@
 							$script .= '<td>'.$unApprenant->getPrenom().'</td>';
 							$script .= '<td>'.$unApprenant->getEmail().'</td>';
 							$script .= '<td class="actions">';
-							$script .= '<a href="index.php?page=apprenant&action=edit&id='.$unApprenant->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-							$script .= '<a data-action="deletelink" href="index.php?page=apprenant&action=delete&id='.$unApprenant->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
-							$script .= '<a href="index.php?page=projet&action=list&idapprenant='.$unApprenant->getId().'"><img src="./public/medias/projet_blue.png" alt="voir les apprenants"></a>';
+							$script .= '<a title="Modifier" href="index.php?page=apprenant&action=edit&id='.$unApprenant->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Supprimer" data-action="deletelink" href="index.php?page=apprenant&action=delete&id='.$unApprenant->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Ses projets" href="index.php?page=projet&action=list&idapprenant='.$unApprenant->getId().'"><img src="./public/medias/projet_blue.png" alt="voir les apprenants"></a>';
 							$script .= '</td>';
 							$script .= '</tr>';
 						}

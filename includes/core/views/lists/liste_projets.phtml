@@ -29,14 +29,14 @@
 						$script = '';
 						foreach ($lesProjets as $unProjet){
 							$script .= '<tr>';
-							$script .= '<td><a href="index.php?page=projet&action=view&id='.$unProjet->getId().'">'.$unProjet->getNom().'</a></td>';
+							$script .= '<td><a title="Voir les détails du projet" href="index.php?page=projet&action=view&id='.$unProjet->getId().'">'.$unProjet->getNom().'</a></td>';
 							$script .= '<td>'.$unProjet->getDateDebut()->format('d/m/Y').'</td>';
-							$script .= '<td>'.$unProjet->getNbSuivis().'</td>';
-							$script .= '<td>'.$unProjet->getNbFonctionnalites().'</td>';
-							$script .= '<td>'.$unProjet->getNbTechnologies().'</td>';
+							$script .= '<td>'.$unProjet->getNbSuivis().'<a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
+							$script .= '<td>'.$unProjet->getNbFonctionnalites().'<a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
+							$script .= '<td>'.$unProjet->getNbTechnologies().'<a title="Nouvelle technologie" href="index.php?page=technologie&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
 							$script .= '<td class="actions">';
-							$script .= '<a href="index.php?page=projet&action=edit&id='.$unProjet->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-							$script .= '<a data-action="deletelink" href="index.php?page=projet&action=delete&id='.$unProjet->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Modifier le projet" href="index.php?page=projet&action=edit&id='.$unProjet->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+							$script .= '<a title="Supprimer le projet" data-action="deletelink" href="index.php?page=projet&action=delete&id='.$unProjet->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
 							$script .= '</td>';
 							$script .= '</tr>';
 						}

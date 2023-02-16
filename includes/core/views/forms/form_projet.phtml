@@ -1,0 +1,75 @@
+<?php
+	/**
+	 * @var Projet $unProjet
+	 *
+	 */
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<?php require "includes/core/views/partials/page_head.phtml"; ?>
+</head>
+<body>
+	<main>
+		<header>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content">
+			<?= $message ?? '' ?>
+			<form action="" method="post">
+				<header>
+					<h3>Auteur : <a title="Voir les projets de l'apprenant" href="index.php?page=projet&action=list&idapprenant=<?= $unApprenant->getId() ?>"><?= $unApprenant->getFullName() ?></a></h3>
+					<h3>Promotion : <a title="Voir la liste des apprenants de la promotion" href="index.php?page=apprenant&action=list&idpromo=<?= $unApprenant->getPromotion()->getId() ?>"><?= $unApprenant->getPromotion()->getNom() ?></a></h3>
+				</header>
+				<div class="field">
+					<label for="champNom">Nom : </label>
+					<div>
+						<input type="text" name="chNom" id="champNom" value="<?= $unProjet->getNom() ?>" placeholder="Saisir le nom du projet" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champDateDebut">Date de début : </label>
+					<div>
+						<input type="date" name="chDateDebut" id="champDateDebut" value="<?= $unProjet->getDateDebut()->format('Y-m-d') ?>" placeholder="Saisir la date de début du projet" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champPresentation">Présentation: </label>
+					<div>
+						<textarea name="chPresentation" id="champPresentation" placeholder="Saisir la présentation du projet" required><?= $unProjet->getPresentation() ?></textarea>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champSpecificites">Spécificités: </label>
+					<div>
+						<textarea name="chSpecificites" id="champSpecificites" placeholder="Saisir les spécificités du projet" ><?= $unProjet->getSpecificites() ?></textarea>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champEvolutions">Evolutions: </label>
+					<div>
+						<textarea name="chEvolutions" id="champEvolutions" placeholder="Saisir les évolutions prévues du projet" ><?= $unProjet->getEvolutions() ?></textarea>
+						<span></span>
+					</div>
+				</div>
+				<div class="actions">
+					<button class="btn btn-submit" type="submit">Valider</button>
+					<button class="btn btn-cancel" type="reset">Réinitialiser</button>
+				</div>
+			</form>
+		</section>
+		<?= $message ?? '' ?> 
+		<footer>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
+		</footer>
+	</main>
+	<script src="public/scripts/common_functions.js"></script>
+</body>
+</html>

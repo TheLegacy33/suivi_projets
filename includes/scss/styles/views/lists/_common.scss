@@ -29,6 +29,18 @@ table{
 			td{
 				border: solid 1px black;
 				padding: .2rem;
+				vertical-align: middle;
+				line-height: 20px;
+
+				img{
+					&.mini{
+						max-height: 16px;
+						max-width: 16px;
+						vertical-align: middle;
+						margin: 0 15px;
+					}
+				}
+
 				&.actions{
 					border: none;
 					display: flex;

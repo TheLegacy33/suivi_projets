@@ -34,7 +34,7 @@ form {
 					margin-right: 15px;
 				}
 
-				> input {
+				> input, > textarea {
 					&[type=text], &[type=date], &[type=password] {
 						padding-left: 1rem;
 						width: 100%;
@@ -46,6 +46,7 @@ form {
 					}
 
 					&:required {
+
 						+ span {
 							color: orange;
 
@@ -57,41 +58,40 @@ form {
 								text-align: center;
 							}
 						}
-
-						 &:valid{
-							 + span{
-								 color: green;
-							 }
-						 }
-					}
-
-					&:focus{
-						border-color: transparent;
-						color: green;
-						&:valid {
-							+ span {
-								color: green;
-
-								&::after {
-									content: '*';
-									display: block;
-									width: 15px;
-									height: 15px;
-									text-align: center;
-								}
+						&:valid{
+							+ span{
+							 color: green;
 							}
 						}
 
-						&:invalid {
-							+ span {
-								color: red;
+						&:focus{
+							border-color: transparent;
+							color: green;
+							&:valid {
+								+ span {
+									color: green;
 
-								&::after {
-									content: '*';
-									display: block;
-									width: 15px;
-									height: 15px;
-									text-align: center;
+									&::after {
+										content: '*';
+										display: block;
+										width: 15px;
+										height: 15px;
+										text-align: center;
+									}
+								}
+							}
+
+							&:invalid {
+								+ span {
+									color: red;
+
+									&::after {
+										content: '*';
+										display: block;
+										width: 15px;
+										height: 15px;
+										text-align: center;
+									}
 								}
 							}
 						}

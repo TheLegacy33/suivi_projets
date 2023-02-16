@@ -1,0 +1,25 @@
+.projets{
+	min-width: 70%;
+	thead{
+		tr{
+			th{
+				width: 12%;
+
+				&:first-child{
+					width: 40%
+				}
+
+			}
+		}
+	}
+	tbody {
+		tr{
+			td{
+				text-align: center;
+				&:first-child{
+					text-align: left;
+				}
+			}
+		}
+	}
+}

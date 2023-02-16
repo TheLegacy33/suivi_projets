@@ -1,4 +1,10 @@
 <?php
+	/**
+	 * @var Referentiel $unReferentiel
+	 * @var string $action;
+	 */
+
+
 	require_once "includes/core/models/DAO/DAOCompetences.php";
 	require_once "includes/core/models/DAO/DAOBlocCompetences.php";
 	require_once "includes/core/models/DAO/DAOReferentiel.php";
@@ -11,7 +17,13 @@
 			break;
 		}
 		case 'view':{
-			$unReferentiel = DAOReferentiel::getById($_GET['id'] ?? 0);
+			$idReferentiel = $_GET['id'] ?? 0;
+			$unReferentiel = DAOReferentiel::getById();
+			$unReferentiel->setBlocscompetences(DAOBlocCompetences::getByIdReferentiel($idReferentiel));
+
+			foreach ($unReferentiel->getBlocscompetences() as $unBloc){
+				$unBloc->setCompetences(DAOCompetences::getByIdBloc($unBloc->getId()));
+			}
 			require_once "includes/core/views/view_referentiel.phtml";
 			break;
 		}
