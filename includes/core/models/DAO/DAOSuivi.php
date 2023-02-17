@@ -1,5 +1,6 @@
 <?php
 	require_once "includes/core/models/DAO/BDD.php";
+	require_once "includes/core/models/Classes/Suivi.php";
 	class DAOSuivi extends BDD{
 		public static function getAllByIdProjet(int $idProjet): array{
 			$conn = parent::getConnexion();

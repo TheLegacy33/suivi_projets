@@ -2,12 +2,45 @@ body, html, *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 14px;
-	font-family: Tahoma, Verdana, Sans Serif, serif;
 }
 
 img {
 	border: none;
+	&.mini{
+		width: 24px;
+
+		&.w-10{
+			width: 10px;
+		}
+
+		&.h-10{
+			height: 10px;
+		}
+
+		&.w-12{
+			width: 12px;
+		}
+
+		&.h-12{
+			height: 12px;
+		}
+
+		&.w-14{
+			width: 14px;
+		}
+
+		&.h-14{
+			height: 14px;
+		}
+
+		&.w-16{
+			width: 16px;
+		}
+
+		&.h-16{
+			height: 16px;
+		}
+	}
 }
 
 a{
@@ -22,6 +55,8 @@ a{
 }
 
 main{
+	font-size: 14px;
+	font-family: Tahoma, Verdana, Sans Serif, serif;
 	> section {
 		min-width: 600px;
 		overflow: hidden;
@@ -47,6 +82,12 @@ main{
 			align-items: center;
 		}
 
+		>h1, >h2, >h3{
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+
 		> article {
 			min-width: 400px;
 			min-height: 200px;
@@ -59,11 +100,13 @@ main{
 			> header {
 				height: 30px;
 				line-height: 30px;
-				background-color: #343a40;
-				color: #bce8f1;
+				background-color: black;
+				color: white;
 				text-align: center;
 				border-top-left-radius: 5px;
 				border-top-right-radius: 5px;
+				text-transform: uppercase;
+				font-size: 1.2rem;
 			}
 
 			> section {
@@ -87,6 +130,10 @@ main{
 		> div {
 			display: block;
 			width: 100%;
+		}
+
+		@media print {
+			border: none;
 		}
 	}
 }

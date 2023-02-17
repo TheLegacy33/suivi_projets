@@ -1,0 +1,53 @@
+<?php
+	/**
+	 * @var Fonctionnalite $uneFonctionnalite
+	 *
+	 */
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<?php require "includes/core/views/partials/page_head.phtml"; ?>
+</head>
+<body>
+	<main>
+		<header>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content">
+			<?= $message ?? '' ?>
+			<form action="" method="post">
+				<header>
+					<h3>Projet : <a title="Voir le projet" href="index.php?page=projet&action=view&id=<?= $unProjet->getId() ?>"><?= $unProjet->getNom() ?></a></h3>
+					<h3>Auteur : <a title="Voir les projets de l'apprenant" href="index.php?page=projet&action=list&idapprenant=<?= $unApprenant->getId() ?>"><?= $unApprenant->getFullName() ?></a></h3>
+				</header>
+				<div class="field">
+					<label for="champLibelle">Libelle : </label>
+					<div>
+						<input type="text" name="chLibelle" id="champLibelle" value="<?= $uneFonctionnalite->getLibelle() ?>" placeholder="Saisir le libellé de la fonctionnalité" required/>
+						<span></span>
+					</div>
+				</div>
+				<div class="field">
+					<label for="champDetails">Détails: </label>
+					<div>
+						<textarea name="chDetails" id="champDetails" placeholder="Saisir les détails de la fonctionnalité" required><?= $uneFonctionnalite->getDetails() ?></textarea>
+						<span></span>
+					</div>
+				</div>
+				<div class="actions">
+					<button class="btn btn-submit" type="submit">Valider</button>
+					<button class="btn btn-cancel" type="reset">Réinitialiser</button>
+				</div>
+			</form>
+		</section>
+		<footer>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
+		</footer>
+	</main>
+	<script src="public/scripts/common_functions.js"></script>
+</body>
+</html>

@@ -1,9 +1,10 @@
 <?php
-
+	require_once "includes/core/models/Classes/Intervenant.php";
 	class Suivi{
 		private int $id;
 		private DateTime $dateSuivi;
 		private string $commentaire;
+		private Intervenant $intervenant;
 
 		/**
 		 * @param DateTime $dateSuivi
@@ -13,6 +14,7 @@
 			$this->dateSuivi = $dateSuivi;
 			$this->commentaire = $commentaire;
 			$this->id = 0;
+			$this->intervenant = new Intervenant();
 		}
 
 		/**
@@ -57,5 +59,17 @@
 			$this->commentaire = $commentaire;
 		}
 
+		/**
+		 * @return Intervenant
+		 */
+		public function getIntervenant(): Intervenant{
+			return $this->intervenant;
+		}
 
+		/**
+		 * @param Intervenant $intervenant
+		 */
+		public function setIntervenant(Intervenant $intervenant): void{
+			$this->intervenant = $intervenant;
+		}
 	}

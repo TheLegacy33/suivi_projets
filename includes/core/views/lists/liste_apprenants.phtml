@@ -6,13 +6,15 @@
 <body>
 	<main>
 		<header>
-				<?php require "includes/core/views/partials/page_header.phtml"; ?>
-			</header>
-			<nav>
-				<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
-			</nav>
-			<section id="content">
-			<a href="index.php?page=contact&action=add">Ajouter un apprenant</a>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content" class="flexcol">
+			<h2>
+				Les apprenants
+			</h2>
 			<table class="apprenants">
 				<thead>
 					<th>Nom</th>
@@ -21,6 +23,9 @@
 					<th>Promo</th>
 					<th colspan="2">Actions</th>
 				</thead>
+				<caption>
+					<a href="index.php?page=contact&action=add">Ajouter un apprenant</a>
+				</caption>
 				<tbody>
 					<?php
 						$script = '';

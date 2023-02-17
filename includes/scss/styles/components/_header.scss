@@ -19,7 +19,8 @@ main{
 				padding-right: 120px;
 			}
 		}
+		@media print {
+			display: none;
+		}
 	}
-
-
 }

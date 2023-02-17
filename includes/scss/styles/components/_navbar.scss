@@ -34,5 +34,9 @@ main{
 				}
 			}
 		}
+
+		@media print {
+			display: none;
+		}
 	}
 }

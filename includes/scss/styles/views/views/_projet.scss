@@ -26,11 +26,51 @@
 
 			&.fonctionnalites, &.technologies, &.suivis{
 				> ul > li{
+					cursor: default;
 					margin: 1rem 3rem;
 
-					ul > li{
-						margin: 0.2rem 3rem;
+					a{
+						margin-left: 10px;
 					}
+
+					ul > li{
+						cursor: default;
+						margin: 0.2rem 3rem;
+
+						a{
+							margin-left: 10px;
+						}
+					}
+				}
+			}
+
+			&.suivis{
+				padding-left: 0;
+				padding-right: 0;
+				h3{
+					padding-left: 5px;
+				}
+				header{
+					padding: 2px 2rem;
+					border-top: solid 1px rgba(220, 220, 220, 0.8);
+					border-bottom: solid 1px rgba(220, 220, 220, 0.8);
+					background-color: rgba(240, 240, 240, 0.8);
+					font-weight: bolder;
+					font-size: 1rem;
+					line-height: 30px;
+					min-height: 30px;
+					a{
+						margin-left: 10px;
+
+					}
+					img{
+						vertical-align: middle;
+					}
+
+				}
+
+				p{
+					padding: 15px 4rem;
 				}
 			}
 		}

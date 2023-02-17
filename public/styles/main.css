@@ -2,12 +2,37 @@ body, html, * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
-  font-family: Tahoma, Verdana, Sans Serif, serif;
 }
 
 img {
   border: none;
+}
+img.mini {
+  width: 24px;
+}
+img.mini.w-10 {
+  width: 10px;
+}
+img.mini.h-10 {
+  height: 10px;
+}
+img.mini.w-12 {
+  width: 12px;
+}
+img.mini.h-12 {
+  height: 12px;
+}
+img.mini.w-14 {
+  width: 14px;
+}
+img.mini.h-14 {
+  height: 14px;
+}
+img.mini.w-16 {
+  width: 16px;
+}
+img.mini.h-16 {
+  height: 16px;
 }
 
 a {
@@ -21,6 +46,10 @@ a:hover {
   color: orange;
 }
 
+main {
+  font-size: 14px;
+  font-family: Tahoma, Verdana, Sans Serif, serif;
+}
 main > section {
   min-width: 600px;
   overflow: hidden;
@@ -44,6 +73,11 @@ main > section.flexcol {
 main > section.vertical-center {
   align-items: center;
 }
+main > section > h1, main > section > h2, main > section > h3 {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 main > section > article {
   min-width: 400px;
   min-height: 200px;
@@ -56,11 +90,13 @@ main > section > article {
 main > section > article > header {
   height: 30px;
   line-height: 30px;
-  background-color: #343a40;
-  color: #bce8f1;
+  background-color: black;
+  color: white;
   text-align: center;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
 }
 main > section > article > section {
   min-height: 150px;
@@ -80,6 +116,11 @@ main > section > article > footer {
 main > section > div {
   display: block;
   width: 100%;
+}
+@media print {
+  main > section {
+    border: none;
+  }
 }
 
 form {
@@ -195,6 +236,11 @@ table thead tr th {
 table thead tr th.actions {
   width: 20%;
 }
+table caption {
+  padding: 5px;
+  caption-side: bottom;
+  text-align: right;
+}
 table tbody tr {
   border: solid 1px black;
 }
@@ -208,7 +254,6 @@ table tbody tr td img.mini {
   max-height: 16px;
   max-width: 16px;
   vertical-align: middle;
-  margin: 0 15px;
 }
 table tbody tr td.actions {
   border: none;
@@ -270,6 +315,13 @@ table tbody tr:hover {
 .projets tbody tr td:first-child {
   text-align: left;
 }
+.projets tbody tr td div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: none;
+}
 
 .referentiel article header + div {
   display: flex;
@@ -313,10 +365,44 @@ table tbody tr:hover {
   margin-bottom: 20px;
 }
 .projet article section.fonctionnalites > ul > li, .projet article section.technologies > ul > li, .projet article section.suivis > ul > li {
+  cursor: default;
   margin: 1rem 3rem;
 }
+.projet article section.fonctionnalites > ul > li a, .projet article section.technologies > ul > li a, .projet article section.suivis > ul > li a {
+  margin-left: 10px;
+}
 .projet article section.fonctionnalites > ul > li ul > li, .projet article section.technologies > ul > li ul > li, .projet article section.suivis > ul > li ul > li {
+  cursor: default;
   margin: 0.2rem 3rem;
+}
+.projet article section.fonctionnalites > ul > li ul > li a, .projet article section.technologies > ul > li ul > li a, .projet article section.suivis > ul > li ul > li a {
+  margin-left: 10px;
+}
+.projet article section.suivis {
+  padding-left: 0;
+  padding-right: 0;
+}
+.projet article section.suivis h3 {
+  padding-left: 5px;
+}
+.projet article section.suivis header {
+  padding: 2px 2rem;
+  border-top: solid 1px rgba(220, 220, 220, 0.8);
+  border-bottom: solid 1px rgba(220, 220, 220, 0.8);
+  background-color: rgba(240, 240, 240, 0.8);
+  font-weight: bolder;
+  font-size: 1rem;
+  line-height: 30px;
+  min-height: 30px;
+}
+.projet article section.suivis header a {
+  margin-left: 10px;
+}
+.projet article section.suivis header img {
+  vertical-align: middle;
+}
+.projet article section.suivis p {
+  padding: 15px 4rem;
 }
 
 main > header {
@@ -339,6 +425,11 @@ main > header > div > p {
   font-weight: bold;
   text-transform: uppercase;
   padding-right: 120px;
+}
+@media print {
+  main > header {
+    display: none;
+  }
 }
 
 main > nav {
@@ -372,6 +463,11 @@ main > nav > ul li a:link, main > nav > ul li a:hover, main > nav > ul li a:visi
 main > nav > ul li a:hover {
   background-color: white;
   color: black;
+}
+@media print {
+  main > nav {
+    display: none;
+  }
 }
 
 button {
@@ -440,6 +536,11 @@ main > footer {
 }
 main > footer .footer-link {
   color: white;
+}
+@media print {
+  main > footer .footer-link {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

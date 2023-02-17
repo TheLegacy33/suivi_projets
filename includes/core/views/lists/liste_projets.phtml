@@ -11,19 +11,25 @@
 		<nav>
 			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
 		</nav>
-		<section id="content">
-			<a href="index.php?page=projet&action=add&idapprenant=<?= $idApprenant ?>">Ajouter un projet</a>
+
+		<section id="content" class="flexcol">
+			<h2>
+				Projets de <?= $unApprenant->getFullName(); ?> de la promo <a title="Voir la liste des apprenants de la promotion" href="index.php?page=apprenant&action=list&idpromo=<?= $unApprenant->getPromotion()->getId() ?>"><?= $unApprenant->getPromotion()->getNom() ?></a>
+			</h2>
 			<table class="projets">
 				<thead>
 					<tr>
 						<th>Nom</th>
 						<th>Date Début</th>
-						<th>Nb Suivis</th>
-						<th>Nb Foncionnalités</th>
-						<th>Nb Technologies</th>
+						<th>Suivis</th>
+						<th>Fonctionnalités</th>
+						<th>Technologies</th>
 						<th class="actions" colspan="2">Actions</th>
 					</tr>
 				</thead>
+				<caption>
+					<a href="index.php?page=projet&action=add&idapprenant=<?= $unApprenant->getId() ?>">Ajouter un projet</a>
+				</caption>
 				<tbody>
 					<?php
 						$script = '';
@@ -31,9 +37,9 @@
 							$script .= '<tr>';
 							$script .= '<td><a title="Voir les détails du projet" href="index.php?page=projet&action=view&id='.$unProjet->getId().'">'.$unProjet->getNom().'</a></td>';
 							$script .= '<td>'.$unProjet->getDateDebut()->format('d/m/Y').'</td>';
-							$script .= '<td>'.$unProjet->getNbSuivis().'<a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
-							$script .= '<td>'.$unProjet->getNbFonctionnalites().'<a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
-							$script .= '<td>'.$unProjet->getNbTechnologies().'<a title="Nouvelle technologie" href="index.php?page=technologie&action=add&idprojet="'.$unProjet->getId().'><img class="mini" src="./public/medias/plus_blue.png"/></a></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#suivis">'.$unProjet->getNbSuivis().'</a><a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#fonctionnalites">'.$unProjet->getNbFonctionnalites().'</a><a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#technologies">'.$unProjet->getNbTechnologies().'</a><a title="Nouvelle technologie" href="index.php?page=technologie&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
 							$script .= '<td class="actions">';
 							$script .= '<a title="Modifier le projet" href="index.php?page=projet&action=edit&id='.$unProjet->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
 							$script .= '<a title="Supprimer le projet" data-action="deletelink" href="index.php?page=projet&action=delete&id='.$unProjet->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';

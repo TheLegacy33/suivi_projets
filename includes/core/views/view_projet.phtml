@@ -45,6 +45,7 @@
 					</p>
 				</section>
 				<section class="fonctionnalites">
+					<a id="fonctionnalites"></a>
 					<h3>Fonctionnalités : </h3>
 					<?php
 						if ($unProjet->getNbFonctionnalites() == 0){
@@ -52,7 +53,15 @@
 						}else{
 							$script = '<ul>';
 							foreach ($unProjet->getFonctionnalites() as $uneFonctionnalite){
-								$script .= '<li>' . $uneFonctionnalite->getLibelle() . '</li>';
+								$script .= '<li>';
+								$script .= $uneFonctionnalite->getLibelle();
+								$script .= '<a href="index.php?page=fonctionnalite&action=edit&id='.$uneFonctionnalite->getId().'" title="Modifier">';
+								$script .= '<img class="mini w-10 h-10" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
+								$script .= '</a>';
+								$script .= '<a data-action="deletelink" href="index.php?page=fonctionnalite&action=delete&id='.$uneFonctionnalite->getId().'" title="Supprimer">';
+								$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+								$script .= '</a>';
+								$script .= '</li>';
 							}
 							$script .= '</ul>';
 						}
@@ -60,6 +69,7 @@
 					?>
 				</section>
 				<section class="technologies">
+					<a id="technologies"></a>
 					<h3>Technologies : </h3>
 					<?php
 						if ($unProjet->getNbTechnologies() == 0){
@@ -67,7 +77,12 @@
 						}else{
 							$script = '<ul>';
 							foreach ($unProjet->getTechnologies() as $uneTechnologie){
-								$script .= '<li>'.$uneTechnologie->getLibelle().'</li>';
+								$script .= '<li>';
+								$script .= $uneTechnologie->getLibelle();
+								$script .= '<a data-action="deletelink" href="index.php?page=technologie&action=removefromproject&idprojet='.$unProjet->getId().'&idtechnologie='.$uneTechnologie->getId().'" title="Supprimer">';
+								$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+								$script .= '</a>';
+								$script .= '</li>';
 							}
 							$script .= '</ul>';
 						}
@@ -75,6 +90,7 @@
 					?>
 				</section>
 				<section class="suivis">
+					<a id="suivis"></a>
 					<h3>Suivis : </h3>
 					<?php
 						if ($unProjet->getNbSuivis() == 0){
@@ -82,9 +98,19 @@
 						}else{
 							$script = '';
 							foreach ($unProjet->getSuivis() as $unSuivi){
-								$script .= '<section>';
-									$script .= '<header>'.$unSuivi->getDateSuivi().'</header>';
-									$script .= '<p>'.$unSuivi->getCommentaire().'</p>';
+								$script .= '<section class="suivi">';
+									$script .= '<header>';
+										$script .= $unSuivi->getDateSuivi()->format('d/m/Y');
+										$script .= ' - par : ';
+										$script .= $unSuivi->getIntervenant()->getFullName();
+										$script .= '<a href="index.php?page=suivi&action=edit&id='.$unSuivi->getId().'" title="Modifier ce suivi">';
+										$script .= '<img class="mini w-16 h-16" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
+										$script .= '</a>';
+										$script .= '<a data-action="deletelink" href="index.php?page=suivi&action=delete&id='.$unSuivi->getId().'" title="Supprimer ce suivi">';
+										$script .= '<img class="mini w-16 h-16" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+										$script .= '</a>';
+									$script .= '</header>';
+									$script .= '<p>'.nl2br($unSuivi->getCommentaire()).'</p>';
 								$script .= '</section>';
 							}
 						}

@@ -4,44 +4,49 @@
 	<?php require "includes/core/views/partials/page_head.phtml"; ?>
 </head>
 <body>
-<main>
-	<header>
-		<?php require "includes/core/views/partials/page_header.phtml"; ?>
-	</header>
-	<nav>
-		<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
-	</nav>
-	<section id="content">
-		<a href="index.php?page=titre&action=add">Ajouter un titre</a>
-		<table class="titres">
-			<thead>
-			<th>Titre</th>
-			<th>Réf RNCP</th>
-			<th colspan="2">Actions</th>
-			</thead>
-			<tbody>
-			<?php
-				$script = '';
-				foreach ($lesTitres as $unTitre){
-					$script .= '<tr>';
-					$script .= '<td>'.$unTitre->getNom().'</td>';
-					$script .= '<td><a href="index.php?page=referentiel&action=view&id='.$unTitre->getReferentiel()->getId().'">'.$unTitre->getReferentiel()->getNumRncp().'</a></td>';
-					$script .= '<td class="actions">';
-					$script .= '<a href="index.php?page=titre&action=edit&id='.$unTitre->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-					$script .= '<a data-action="deletelink" href="index.php?page=titre&action=delete&id='.$unTitre->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
-					$script .= '</td>';
-					$script .= '</tr>';
-				}
-				print($script);
-			?>
-			</tbody>
+	<main>
+		<header>
+			<?php require "includes/core/views/partials/page_header.phtml"; ?>
+		</header>
+		<nav>
+			<?php require_once "includes/core/views/partials/navbar.phtml"; ?>
+		</nav>
+		<section id="content" class="flexcol">
+			<h2>
+				Les titres
+			</h2>
+			<table class="titres">
+				<thead>
+				<th>Titre</th>
+				<th>Réf RNCP</th>
+				<th colspan="2">Actions</th>
+				</thead>
+				<caption>
+					<a href="index.php?page=titre&action=add">Ajouter un titre</a>
+				</caption>
+				<tbody>
+				<?php
+					$script = '';
+					foreach ($lesTitres as $unTitre){
+						$script .= '<tr>';
+						$script .= '<td>'.$unTitre->getNom().'</td>';
+						$script .= '<td><a href="index.php?page=referentiel&action=view&id='.$unTitre->getReferentiel()->getId().'">'.$unTitre->getReferentiel()->getNumRncp().'</a></td>';
+						$script .= '<td class="actions">';
+						$script .= '<a href="index.php?page=titre&action=edit&id='.$unTitre->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+						$script .= '<a data-action="deletelink" href="index.php?page=titre&action=delete&id='.$unTitre->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+						$script .= '</td>';
+						$script .= '</tr>';
+					}
+					print($script);
+				?>
+				</tbody>
 
-		</table>
-	</section>
-	<footer>
-		<?php require_once "includes/core/views/partials/footer.phtml"; ?>
-	</footer>
-	<script src="public/scripts/common_functions.js"></script>
-</main>
+			</table>
+		</section>
+		<footer>
+			<?php require_once "includes/core/views/partials/footer.phtml"; ?>
+		</footer>
+		<script src="public/scripts/common_functions.js"></script>
+	</main>
 </body>
 </html>

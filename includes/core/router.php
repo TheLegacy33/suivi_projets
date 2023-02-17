@@ -37,6 +37,18 @@
 			require_once "includes/core/controllers/controller_projet.php";
 			break;
 		}
+		case 'suivi':{
+			require_once "includes/core/controllers/controller_suivi.php";
+			break;
+		}
+		case 'fonctionnalite':{
+			require_once "includes/core/controllers/controller_fonctionnalite.php";
+			break;
+		}
+		case 'technologie':{
+			require_once "includes/core/controllers/controller_technologie.php";
+			break;
+		}
 		default:{
 			$action = 'view';
 			require_once "includes/core/controllers/controller_error.php";

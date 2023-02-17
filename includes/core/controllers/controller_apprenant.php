@@ -9,6 +9,7 @@
 	switch ($action){
 		case 'list':{
 			$idPromo = $_GET['idpromo'] ?? 0;
+			$unePromo = DAOPromotion::getById($idPromo);
 			if ($idPromo > 0){
 				$lesApprenants = DAOApprenant::getAllByIdPromo($idPromo);
 

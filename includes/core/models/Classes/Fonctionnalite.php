@@ -4,13 +4,17 @@
 		private int $id;
 		private string $libelle, $details;
 
+		private int $idProjet;
+
 		/**
 		 * @param string $libelle
 		 * @param string $details
+		 * @param int    $idProjet
 		 */
-		public function __construct(string $libelle, string $details){
+		public function __construct(string $libelle = '', string $details = '', int $idProjet = 0){
 			$this->libelle = $libelle;
 			$this->details = $details;
+			$this->idProjet = $idProjet;
 			$this->id = 0;
 		}
 
@@ -55,6 +59,21 @@
 		public function setDetails(string $details): void{
 			$this->details = $details;
 		}
+
+		/**
+		 * @return int
+		 */
+		public function getIdProjet(): int{
+			return $this->idProjet;
+		}
+
+		/**
+		 * @param int $idProjet
+		 */
+		public function setIdProjet(int $idProjet): void{
+			$this->idProjet = $idProjet;
+		}
+
 
 
 	}

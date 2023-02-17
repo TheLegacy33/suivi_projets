@@ -15,6 +15,9 @@ main {
 		gap: 10rem;
 		.footer-link {
 			color: white;
+			@media print {
+				display: none;
+			}
 		}
 	}
 }

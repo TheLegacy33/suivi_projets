@@ -1,6 +1,7 @@
 <?php
 	/**
 	 * @var Projet $unProjet
+	 * @var Suivi $unSuivi
 	 * @var string $action;
 	 */
 
@@ -10,17 +11,24 @@
 	require_once "includes/core/models/DAO/DAOProjet.php";
 	require_once "includes/core/models/DAO/DAOPromotion.php";
 	require_once "includes/core/models/DAO/DAOApprenant.php";
+	require_once "includes/core/models/DAO/DAOIntervenant.php";
 	switch ($action){
 		case 'list':{
 
 			$idApprenant = $_GET['idapprenant'] ?? 0;
+			$unApprenant = DAOApprenant::getById($idApprenant);
+			$unApprenant->setPromotion(DAOPromotion::getById($unApprenant->getIdPromo()));
 			$lesProjets = DAOProjet::getAllByIdApprenant($idApprenant);
 			foreach ($lesProjets as $unProjet){
 				$unProjet->setSuivis(DAOSuivi::getAllByIdProjet($unProjet->getId()));
+
+				foreach ($unProjet->getSuivis() as $unSuivi){
+					$unSuivi->setIntervenant(DAOIntervenant::getByIdSuivi($unSuivi->getId()));
+				}
+
 				$unProjet->setFonctionnalites(DAOFonctionnalite::getAllByIdProjet($unProjet->getId()));
 				$unProjet->setTechnologies(DAOTechnologie::getAllByIdProjet($unProjet->getId()));
 			}
-
 			require_once "includes/core/views/lists/liste_projets.phtml";
 			break;
 		}
@@ -29,8 +37,13 @@
 
 			$unProjet = DAOProjet::getById($idProjet);
 			$unProjet->setSuivis(DAOSuivi::getAllByIdProjet($idProjet));
+			foreach ($unProjet->getSuivis() as $unSuivi){
+				$unSuivi->setIntervenant(DAOIntervenant::getByIdSuivi($unSuivi->getId()));
+			}
+
 			$unProjet->setFonctionnalites(DAOFonctionnalite::getAllByIdProjet($idProjet));
 			$unProjet->setTechnologies(DAOTechnologie::getAllByIdProjet($idProjet));
+
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
 			$unApprenant->setPromotion(DAOPromotion::getById($unApprenant->getIdPromo()));
 			require_once "includes/core/views/view_projet.phtml";
@@ -41,6 +54,10 @@
 
 			$unProjet = DAOProjet::getById($idProjet);
 			$unProjet->setSuivis(DAOSuivi::getAllByIdProjet($idProjet));
+			foreach ($unProjet->getSuivis() as $unSuivi){
+				$unSuivi->setIntervenant(DAOIntervenant::getByIdSuivi($unSuivi->getId()));
+			}
+
 			$unProjet->setFonctionnalites(DAOFonctionnalite::getAllByIdProjet($idProjet));
 			$unProjet->setTechnologies(DAOTechnologie::getAllByIdProjet($idProjet));
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());

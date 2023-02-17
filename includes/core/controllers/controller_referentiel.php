@@ -18,7 +18,7 @@
 		}
 		case 'view':{
 			$idReferentiel = $_GET['id'] ?? 0;
-			$unReferentiel = DAOReferentiel::getById();
+			$unReferentiel = DAOReferentiel::getById($idReferentiel);
 			$unReferentiel->setBlocscompetences(DAOBlocCompetences::getByIdReferentiel($idReferentiel));
 
 			foreach ($unReferentiel->getBlocscompetences() as $unBloc){

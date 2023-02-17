@@ -22,7 +22,11 @@ table{
 			}
 		}
 	}
-
+	caption{
+		padding: 5px;
+		caption-side: bottom;
+		text-align: right;
+	}
 	tbody{
 		tr{
 			border: solid 1px black;
@@ -37,7 +41,6 @@ table{
 						max-height: 16px;
 						max-width: 16px;
 						vertical-align: middle;
-						margin: 0 15px;
 					}
 				}
 
