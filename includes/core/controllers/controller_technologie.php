@@ -12,7 +12,7 @@
 	switch ($action){
 		case 'view':{
 
-			require_once "includes/core/views/view_fonctionnalites.phtml";
+			require_once "includes/core/views/view_technologie.phtml";
 			break;
 		}
 
@@ -21,29 +21,29 @@
 			break;
 		}
 
-		case 'add':{
+		case 'addtoproject':{
 			$idProjet = $_GET['idprojet'] ?? 0;
 			$unProjet = DAOProjet::getById($idProjet);
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
+
+			$lesTechnologies = DAOTechnologie::getAllNonAffectedToProject($idProjet);
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
-				$uneFonctionnalite = new Fonctionnalite();
+				$uneTechnologie = new Technologie();
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$uneFonctionnalite = new Fonctionnalite(
-					$_POST['chLibelle'],
-					$_POST['chDetails'],
-					$idProjet
-				);
+				$uneTechnologie = DAOTechnologie::getById(intval($_POST['chCbTechnologie']));
 
-				if (DAOFonctionnalite::insert($uneFonctionnalite)){
+				if (DAOTechnologie::appendtoproject($uneTechnologie, $unProjet)){
 					header('Location: index.php?page=projet&action=list&idapprenant='.$unApprenant->getId());
 				}else{
 					$message = "Erreur d'enregistrement !";
 				}
 			}
 
-			require_once "includes/core/views/forms/form_fonctionnalite.phtml";
+
+
+			require_once "includes/core/views/forms/form_technologie.phtml";
 			break;
 			break;
 		}

@@ -2,6 +2,57 @@
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Technologie.php";
 	class DAOTechnologie extends BDD{
+
+		public static function getAll(): array{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "SELECT technologie.id_technologie, libelle
+				FROM technologie 
+				ORDER BY libelle";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->execute();
+
+			$listeTechnologies = array();
+			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
+				$uneTechnologie = new Technologie(
+					$SQLRow['libelle']
+				);
+				$uneTechnologie->setId($SQLRow['id_technologie']);
+
+				$listeTechnologies[] = $uneTechnologie;
+			}
+			$SQLStmt->closeCursor();
+
+			return $listeTechnologies;
+		}
+
+		public static function getAllNonAffectedToProject(int $idProjet): array{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "SELECT id_technologie, libelle
+				FROM technologie
+				WHERE id_technologie NOT IN (SELECT id_technologie FROM exploiter WHERE id_projet = :idprojet)
+				ORDER BY libelle";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->bindValue(':idprojet', $idProjet, PDO::PARAM_INT);
+			$SQLStmt->execute();
+
+			$listeTechnologies = array();
+			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
+				$uneTechnologie = new Technologie(
+					$SQLRow['libelle']
+				);
+				$uneTechnologie->setId($SQLRow['id_technologie']);
+
+				$listeTechnologies[] = $uneTechnologie;
+			}
+			$SQLStmt->closeCursor();
+
+			return $listeTechnologies;
+		}
+
 		public static function getAllByIdProjet(int $idProjet): array{
 			$conn = parent::getConnexion();
 
@@ -72,7 +123,7 @@
 		public static function delete(Technologie $fonctionnaliteToDelete): bool{
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "DELETE FROM fonctionnalite
+			$SQLQuery = "DELETE FROM technologie
 				WHERE id_fonctionnalite = :id";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
@@ -115,5 +166,22 @@
 			$SQLStmt->bindValue(':idtechnologie', $uneTechnologie->getId(), PDO::PARAM_INT);
 			$SQLStmt->bindValue(':idprojet', $unProjet->getId(), PDO::PARAM_INT);
 			return $SQLStmt->execute();
+		}
+
+		public static function appendtoproject(Technologie $uneTechnologie, Projet $unProjet): bool{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "INSERT INTO exploiter(id_technologie, id_projet)
+			VALUES (:idtechnologie, :idprojet)";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->bindValue(':idtechnologie', $uneTechnologie->getId(), PDO::PARAM_INT);
+			$SQLStmt->bindValue(':idprojet', $unProjet->getId(), PDO::PARAM_INT);
+
+			if (!$SQLStmt->execute()){
+				return false;
+			}else{
+				return true;
+			}
 		}
 	}

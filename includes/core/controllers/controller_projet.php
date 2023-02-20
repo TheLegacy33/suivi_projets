@@ -81,29 +81,43 @@
 			break;
 		}
 		case 'delete':{
-		
+			$idProjet = $_GET['id'] ?? 0;
+
+			$unProjet = DAOProjet::getById($idProjet);
+			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
+
+			if (DAOProjet::delete($unProjet)){
+				header('Location: index.php?page=projet&action=list&idapprenant='.$unApprenant->getId());
+			}else{
+				$message = DAOProjet::getLastErrorMessage();
+			}
 			break;
 		}
 		case 'add':{
-			if (empty($_POST)){
-				// J'arrive sur le formulaire
-				$unTitre = new Titre();
-				
-			}else{
-				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$unTitre = new Titre(
-					$_POST['chNom'],
-					DAOReferentiel::getById($_POST['cbTitre'])
-				);
+			$idApprenant = $_GET['idapprenant'] ?? 0;
+			$unApprenant = DAOApprenant::getById($idApprenant);
+			$unApprenant->setPromotion(DAOPromotion::getById($unApprenant->getIdPromo()));
 
-				if (DAOTitre::insert($unTitre)){
-					header('Location: ?page=contact&action=list');
+			$unProjet = new Projet();
+
+			if (!empty($_POST)){
+				$unProjet->setSuivis(array());
+				$unProjet->setFonctionnalites(array());
+				$unProjet->setTechnologies(array());
+
+				$unProjet->setNom($_POST['chNom']);
+				$unProjet->setDateDebut(date_create($_POST['chDateDebut']));
+				$unProjet->setPresentation($_POST['chPresentation']);
+				$unProjet->setSpecificites($_POST['chSpecificites']);
+				$unProjet->setEvolutions($_POST['chEvolutions']);
+				$unProjet->setIdApprenant($idApprenant);
+				if (DAOProjet::insert($unProjet)){
+					header('Location: index.php?page=projet&action=list&idapprenant='.$unApprenant->getId());
 				}else{
-					$message = "Erreur d'enregistrement !";
+					$message = DAOProjet::getLastErrorMessage();
 				}
 			}
-
-			require_once "includes/core/views/forms/form_titre.phtml";
+			require_once "includes/core/views/forms/form_projet.phtml";
 			break;
 		}
 		default:{

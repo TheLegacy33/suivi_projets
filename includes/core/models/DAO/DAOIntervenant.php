@@ -3,6 +3,27 @@
 	require_once "includes/core/models/Classes/Intervenant.php";
 
 	class DAOIntervenant extends BDD{
+		public static function getAll(): array{
+			$conn = parent::getConnexion();
+
+			$SQLQuery = "SELECT  id_intervenant, nom, prenom, email, id_personne
+				FROM intervenant
+				ORDER BY nom, prenom";
+
+			$SQLStmt = $conn->prepare($SQLQuery);
+			$SQLStmt->execute();
+			$lesIntervenants = array();
+			while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
+				$unIntervenant = new Intervenant($SQLRow['nom'], $SQLRow['prenom'], $SQLRow['email'], $SQLRow['id_personne']);
+				$unIntervenant->setId($SQLRow['id_intervenant']);
+
+				$lesIntervenants[] = $unIntervenant;
+			}
+			$SQLStmt->closeCursor();
+
+			return $lesIntervenants;
+		}
+
 		public static function getById(int $idIntervenant): Intervenant | bool{
 			$conn = parent::getConnexion();
 

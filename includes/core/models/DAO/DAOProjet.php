@@ -62,18 +62,19 @@
 			return $unProjet;
 		}
 
-		public static function insert(Projet $newPromotion): bool {
-			// INSERT DANS LA BDD
+		public static function insert(Projet $newProjet): bool {
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "INSERT INTO promotion(nom, date_debut, date_fin, id_titre)
-			VALUES (:nom, :datedebut, :datefin, :idtitre)";
+			$SQLQuery = "INSERT INTO projet(nom, presentation, specificites, evolutions, date_debut, id_apprenant) 
+					VALUES(:nom, :presentation, :specificites, :evolutions, :datedebut, :idapprenant)";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':datedebut', $newPromotion->getDateDebut()->format('Y-m-d'), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':datefin', $newPromotion->getDateFin()->format('Y-m-d'), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':idtitre', $newPromotion->getTitre()->getId(), PDO::PARAM_INT);
+			$SQLStmt->bindValue(':nom', $newProjet->getNom(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':datedebut', $newProjet->getDateDebut()->format('Y-m-d'), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':evolutions', $newProjet->getEvolutions(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':presentation', $newProjet->getPresentation(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':specificites', $newProjet->getSpecificites(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':idapprenant', $newProjet->getIdApprenant(), PDO::PARAM_STR);
 
 			if (!$SQLStmt->execute()){
 				return false;
@@ -82,14 +83,14 @@
 			}
 		}
 
-		public static function delete(Projet $promoToDelete): bool{
+		public static function delete(Projet $projetToDelete): bool{
 			$conn = parent::getConnexion();
 
-			$SQLQuery = "DELETE FROM promotion
-				WHERE id_promo = :id";
+			$SQLQuery = "DELETE FROM projet
+				WHERE id_projet = :id";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':id', $promoToDelete->getId(), PDO::PARAM_INT);
+			$SQLStmt->bindValue(':id', $projetToDelete->getId(), PDO::PARAM_INT);
 			return $SQLStmt->execute();
 		}
 

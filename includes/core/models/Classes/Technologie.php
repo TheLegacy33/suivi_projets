@@ -7,7 +7,7 @@
 		/**
 		 * @param string $libelle
 		 */
-		public function __construct(string $libelle){
+		public function __construct(string $libelle = ''){
 			$this->libelle = $libelle;
 			$this->id = 0;
 		}

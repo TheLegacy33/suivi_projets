@@ -5,12 +5,12 @@
 		private DateTime $dateDebut;
 		private array $suivis, $fonctionnalites, $technologies;
 
-		public function __construct(string $nom, string $presentation, string $specificites, string $evolutions, DateTime $dateDebut, int $idApprenant = 0){
+		public function __construct(string $nom = '', string $presentation = '', string $specificites = '', string $evolutions = '', DateTime $dateDebut = null, int $idApprenant = 0){
 			$this->nom = $nom;
 			$this->presentation = $presentation;
 			$this->specificites = $specificites;
 			$this->evolutions = $evolutions;
-			$this->dateDebut = $dateDebut;
+			$this->dateDebut = $dateDebut ?? new DateTime('now');
 			$this->suivis = array();
 			$this->fonctionnalites = array();
 			$this->technologies = array();
