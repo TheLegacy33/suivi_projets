@@ -41,21 +41,24 @@
 					</div>
 				</div>
 				<div class="field">
-					<select name="chCbIntervenant" id="champCbIntervenant" required>
-						<option value="0"> -- Sélectionner -- </option>
-						<?php
-							$script = '';
-							foreach ($lesIntervenants as $unIntervenant){
-								if ($unIntervenant->getId() == $unSuivi->getIntervenant()->getId()){
-									$script .= '<option value="'.$unIntervenant->getId().'" selected>'.$unIntervenant->getFullName().'</option>';
-								}else{
-									$script .= '<option value="'.$unIntervenant->getId().'">'.$unIntervenant->getFullName().'</option>';
+					<label for="champCbTechnologie">Technologie : </label>
+					<div>
+						<select name="chCbIntervenant" id="champCbIntervenant" required>
+							<option value="0"> -- Sélectionner -- </option>
+							<?php
+								$script = '';
+								foreach ($lesIntervenants as $unIntervenant){
+									if ($unIntervenant->getId() == $unSuivi->getIntervenant()->getId()){
+										$script .= '<option value="'.$unIntervenant->getId().'" selected>'.$unIntervenant->getFullName().'</option>';
+									}else{
+										$script .= '<option value="'.$unIntervenant->getId().'">'.$unIntervenant->getFullName().'</option>';
+									}
 								}
-							}
-							print($script);
-						?>
-					</select>
-					<span></span>
+								print($script);
+							?>
+						</select>
+						<span></span>
+					</div>
 				</div>
 				<div class="actions">
 					<button class="btn btn-submit" type="submit">Valider</button>

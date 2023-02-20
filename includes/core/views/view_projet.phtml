@@ -46,7 +46,7 @@
 				</section>
 				<section class="fonctionnalites">
 					<a id="fonctionnalites"></a>
-					<h3>Fonctionnalités : </h3>
+					<h3>Fonctionnalités : <a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
 					<?php
 						if ($unProjet->getNbFonctionnalites() == 0){
 							$script = "<p>Aucune fonctionnalité n'est actuellement associée à ce projet !</p>";
@@ -70,7 +70,7 @@
 				</section>
 				<section class="technologies">
 					<a id="technologies"></a>
-					<h3>Technologies : </h3>
+					<h3>Technologies : <a title="Nouvelle technologie" href="index.php?page=technologie&action=addtoproject&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
 					<?php
 						if ($unProjet->getNbTechnologies() == 0){
 							$script = "<p>Aucune technologie n'est actuellement associée à ce projet !</p>";
@@ -91,7 +91,7 @@
 				</section>
 				<section class="suivis">
 					<a id="suivis"></a>
-					<h3>Suivis : </h3>
+					<h3>Suivis : <a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
 					<?php
 						if ($unProjet->getNbSuivis() == 0){
 							$script = "<p>Aucun suivi n'est actuellement associé à ce projet !</p>";
