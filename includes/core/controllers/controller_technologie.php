@@ -32,13 +32,15 @@
 				$uneTechnologie = new Technologie();
 			}else{
 				// Je viens de valider le formulaire : j'ai cliqué sur Submit
-				$uneTechnologie = DAOTechnologie::getById(intval($_POST['chCbTechnologie']));
-
-				if (DAOTechnologie::appendtoproject($uneTechnologie, $unProjet)){
-					header('Location: index.php?page=projet&action=list&idapprenant='.$unApprenant->getId());
-				}else{
-					$message = "Erreur d'enregistrement !";
+				$message = '';
+				foreach ($_POST['chkTech'] as $checkbox){
+					//$uneTechnologie = DAOTechnologie::getById(intval($_POST['chCbTechnologie']));
+					$uneTechnologie = DAOTechnologie::getById(intval($checkbox));
+					if (!DAOTechnologie::appendtoproject($uneTechnologie, $unProjet)){
+						$message .= "Erreur d'enregistrement pour la technologie : $checkbox";
+					}
 				}
+				header('Location: index.php?page=projet&action=view&id='.$idProjet.'#technologies');
 			}
 
 

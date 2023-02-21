@@ -37,7 +37,7 @@
 				);
 
 				if (DAOFonctionnalite::insert($uneFonctionnalite)){
-					header('Location: index.php?page=projet&action=list&idapprenant='.$unApprenant->getId());
+					header('Location: index.php?page=projet&action=view&id='.$idProjet.'#fonctionnalites');
 				}else{
 					$message = "Erreur d'enregistrement !";
 				}

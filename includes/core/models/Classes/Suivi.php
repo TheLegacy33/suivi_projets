@@ -1,7 +1,7 @@
 <?php
 	require_once "includes/core/models/Classes/Intervenant.php";
 	class Suivi{
-		private int $id, $idprojet, $idintervenant;
+		private int $id, $idprojet;
 		private DateTime $dateSuivi;
 		private string $commentaire;
 		private Intervenant $intervenant;
@@ -10,12 +10,11 @@
 		 * @param DateTime $dateSuivi
 		 * @param string   $commentaire
 		 */
-		public function __construct(DateTime $dateSuivi = null, string $commentaire = '', int $idintervenant = 0, int $idprojet = 0){
+		public function __construct(DateTime $dateSuivi = null, string $commentaire = '', int $idprojet = 0){
 			$this->dateSuivi = $dateSuivi ?? new DateTime('now');
 			$this->commentaire = $commentaire;
 			$this->id = 0;
 			$this->idprojet = $idprojet;
-			$this->idintervenant = $idintervenant;
 			$this->intervenant = new Intervenant();
 		}
 
@@ -88,20 +87,4 @@
 		public function setIdprojet(int $idprojet): void{
 			$this->idprojet = $idprojet;
 		}
-
-		/**
-		 * @return int
-		 */
-		public function getIdintervenant(): int{
-			return $this->idintervenant;
-		}
-
-		/**
-		 * @param int $idintervenant
-		 */
-		public function setIdintervenant(int $idintervenant): void{
-			$this->idintervenant = $idintervenant;
-		}
-
-
 	}

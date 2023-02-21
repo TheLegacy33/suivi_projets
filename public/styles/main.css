@@ -210,6 +210,19 @@ form > div.field > div > textarea {
 form > div.field > div > textarea:focus {
   color: green;
 }
+form > div.field > div.checkboxes {
+  display: flex;
+  column-gap: 2rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  flex-direction: column;
+  max-height: 250px;
+  align-items: center;
+}
+form > div.field > div.checkboxes label {
+  display: inline-block;
+  width: 120px;
+}
 form > div.actions {
   width: 100%;
   flex-direction: row;

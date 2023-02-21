@@ -7,6 +7,7 @@
 	switch ($action){
 		case 'login':{
 			require_once "includes/core/models/Classes/User.php";
+			require_once "includes/core/models/DAO/DAOUser.php";
 
 
 

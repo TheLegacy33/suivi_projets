@@ -106,6 +106,20 @@ form {
 						color: green;
 					}
 				}
+
+				&.checkboxes{
+					display: flex;
+					column-gap: 2rem;
+					flex-wrap: wrap;
+					row-gap: 1rem;
+					flex-direction: column;
+					max-height: 250px;
+					align-items: center;
+					label{
+						display: inline-block;
+						width: 120px;
+					}
+				}
 			}
 		}
 

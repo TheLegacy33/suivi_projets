@@ -26,21 +26,21 @@
 					<h3>Auteur : <a title="Voir les projets de l'apprenant" href="index.php?page=projet&action=list&idapprenant=<?= $unApprenant->getId() ?>"><?= $unApprenant->getFullName() ?></a></h3>
 				</header>
 				<div class="field">
-					<label for="champCbTechnologie">Technologie : </label>
-					<div>
-						<select name="chCbTechnologie" id="champCbTechnologie">
-							<option value="0">-- Sélectionner --</option>
-							<?php
-								$script = '';
-								foreach ($lesTechnologies as $uneTechnologie){
-									$script .= '<option value="'.$uneTechnologie->getId().'">'.$uneTechnologie->getLibelle().'</option>';
-								}
-								print($script);
-							?>
-						</select>
-						<span></span>
+					<label for="champCbTechnologie">Technologies : </label>
+					<div class="checkboxes">
+						<?php
+							$script = '';
+							foreach ($lesTechnologies as $uneTechnologie){
+								$script .= '<div>';
+								$script .= '<label for="chkTech'.$uneTechnologie->getId().'">'.$uneTechnologie->getLibelle().'</label>';
+								$script .= '<input type="checkbox" id="chkTech'.$uneTechnologie->getId().'" name="chkTech[]" value="'.$uneTechnologie->getId().'">';
+								$script .= '</div>';
+							}
+							print($script);
+						?>
 					</div>
 				</div>
+
 				<div class="actions">
 					<button class="btn btn-submit" type="submit">Valider</button>
 					<button class="btn btn-cancel" type="reset">Réinitialiser</button>

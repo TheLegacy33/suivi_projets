@@ -69,7 +69,7 @@
 				$unSuivi->setIntervenant(DAOIntervenant::getById(intval($_POST['chCbIntervenant'])));
 				$unSuivi->setIdprojet($idProjet);
 
-				if (DAOSuivi::update($unSuivi)){
+				if (DAOSuivi::insert($unSuivi)){
 					header('Location: index.php?page=projet&action=view&id='.$unSuivi->getIdProjet());
 				}else{
 					$message = "Erreur d'enregistrement !";

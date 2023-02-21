@@ -70,7 +70,8 @@
 			$SQLStmt = $conn->prepare($SQLQuery);
 			$SQLStmt->bindValue(':commentaire', $newSuivi->getCommentaire(), PDO::PARAM_STR);
 			$SQLStmt->bindValue(':date', $newSuivi->getDateSuivi()->format('Y-m-d'), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':idintervenant', $newSuivi->getIntervenant()->getId(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':id_intervenant', $newSuivi->getIntervenant()->getId(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':id_projet', $newSuivi->getIdprojet(), PDO::PARAM_STR);
 
 			if (!$SQLStmt->execute()){
 				return false;
