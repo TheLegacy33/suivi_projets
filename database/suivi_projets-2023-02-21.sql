@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -19,7 +19,7 @@
 -- Current Database: `suivi_projets`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `suivi_projets` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `suivi_projets` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `suivi_projets`;
 
@@ -29,7 +29,7 @@ USE `suivi_projets`;
 
 DROP TABLE IF EXISTS `apprenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apprenant` (
   `id_apprenant` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `apprenant` (
   KEY `FK_APP_PERS` (`id_personne`),
   CONSTRAINT `apprenant_promo_FK` FOREIGN KEY (`id_promo`) REFERENCES `promotion` (`id_promo`),
   CONSTRAINT `FK_APP_PERS` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `bloc_competence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bloc_competence` (
   `id_bloc` int NOT NULL AUTO_INCREMENT,
   `code` varchar(50) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `bloc_competence` (
   PRIMARY KEY (`id_bloc`),
   KEY `bloc_competence_rerentiel_FK` (`id_referentiel`),
   CONSTRAINT `bloc_competence_rerentiel_FK` FOREIGN KEY (`id_referentiel`) REFERENCES `referentiel` (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `commentaire`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `commentaire` (
   `id_commentaire` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(250) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `commentaire` (
   PRIMARY KEY (`id_commentaire`),
   KEY `commentaire_intervenant_FK` (`id_intervenant`),
   CONSTRAINT `commentaire_intervenant_FK` FOREIGN KEY (`id_intervenant`) REFERENCES `intervenant` (`id_intervenant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `competence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `competence` (
   `id_competence` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE `competence` (
   PRIMARY KEY (`id_competence`),
   KEY `competence_bloc_competence_FK` (`id_bloc`),
   CONSTRAINT `competence_bloc_competence_FK` FOREIGN KEY (`id_bloc`) REFERENCES `bloc_competence` (`id_bloc`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `concerner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `concerner` (
   `id_fonctionnalite` int NOT NULL,
   `id_commentaire` int NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE `concerner` (
   CONSTRAINT `concerner_commentaire0_FK` FOREIGN KEY (`id_commentaire`) REFERENCES `commentaire` (`id_commentaire`),
   CONSTRAINT `concerner_fonctionnalite_FK` FOREIGN KEY (`id_fonctionnalite`) REFERENCES `fonctionnalite` (`id_fonctionnalite`),
   CONSTRAINT `concerner_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `exploiter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `exploiter` (
   `id_technologie` int NOT NULL,
   `id_projet` int NOT NULL,
@@ -184,7 +184,7 @@ CREATE TABLE `exploiter` (
   KEY `exploiter_projet0_FK` (`id_projet`),
   CONSTRAINT `exploiter_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`),
   CONSTRAINT `exploiter_technologie_FK` FOREIGN KEY (`id_technologie`) REFERENCES `technologie` (`id_technologie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `exploiter` (
 
 LOCK TABLES `exploiter` WRITE;
 /*!40000 ALTER TABLE `exploiter` DISABLE KEYS */;
-INSERT INTO `exploiter` VALUES (1,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(16,1),(1,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(16,2),(1,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(16,3),(1,4),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4),(16,4);
+INSERT INTO `exploiter` VALUES (1,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(16,1),(19,1),(20,1),(1,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(16,2),(19,2),(20,2),(1,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(10,3),(16,3),(19,3),(20,3),(1,4),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4),(16,4),(17,4),(19,4),(20,4),(1,5),(3,5),(4,5),(5,5),(6,5),(7,5),(8,5),(16,5),(19,5),(20,5),(1,6),(3,6),(4,6),(5,6),(6,6),(7,6),(8,6),(16,6),(19,6),(20,6),(1,7),(3,7),(4,7),(5,7),(6,7),(7,7),(8,7),(16,7),(19,7),(20,7),(1,8),(3,8),(4,8),(5,8),(6,8),(7,8),(8,8),(16,8),(17,8),(19,8),(20,8),(1,9),(3,9),(4,9),(5,9),(6,9),(7,9),(8,9),(16,9),(19,9),(20,9),(1,10),(3,10),(4,10),(5,10),(6,10),(7,10),(8,10),(16,10),(19,10),(20,10),(1,11),(3,11),(4,11),(5,11),(6,11),(7,11),(8,11),(16,11),(1,12),(3,12),(4,12),(5,12),(6,12),(7,12),(8,12),(10,12),(16,12),(17,12),(19,12),(20,12),(1,13),(3,13),(4,13),(5,13),(6,13),(7,13),(8,13),(16,13),(19,13),(20,13),(3,15),(4,15),(5,15),(6,15),(7,15),(8,15),(16,15);
 /*!40000 ALTER TABLE `exploiter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fonctionnalite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fonctionnalite` (
   `id_fonctionnalite` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
@@ -212,7 +212,7 @@ CREATE TABLE `fonctionnalite` (
   PRIMARY KEY (`id_fonctionnalite`),
   KEY `fonctionnalite_projet_FK` (`id_projet`),
   CONSTRAINT `fonctionnalite_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +221,7 @@ CREATE TABLE `fonctionnalite` (
 
 LOCK TABLES `fonctionnalite` WRITE;
 /*!40000 ALTER TABLE `fonctionnalite` DISABLE KEYS */;
-INSERT INTO `fonctionnalite` VALUES (1,'Inscription des participants','Gestion des inscriptions des participants incluant :\nInformations administratives nécessaires\nPréférences\n\n',4),(2,'Enregistrement des équipes de 2 participants','Gestion de la constitution des équipes',4),(3,'Gestion d\'équipes masculines / féminines','Gestion des équipes par catégories / genres',4),(4,'Gestion des catégories d\'équipes','Gestion des catégories d\'équipes ',4),(5,'Consitution des poules avec gestion des préférences des participants','Attribution des poules et affectation des équipes / participants',4),(6,'Planificiation des matchs','Gestion des planning de tournoi et des matchs en fonction des préférences des participants',4),(7,'Authentification','Système d\'authentification',4),(12,'Gestion des utilisateurs','Inscription, connexion et profil des utilisateurs',1),(13,'Gestion des rêves','Saisie et consultation des rêves par utilisateur',1),(14,'Système de votes','Implémentation d\'un système de vote pour que les utilisateurs puissent voter pour le rêve d\'un autre utilisateur',1),(15,'Salon de discussion','Mise en place d\'un salon de discussion pour échanger entre utilisateurs',1),(16,'Correspondance / Matching des rêves par classification ','Mise en place d\'un algorithme de matching entre les rêves des utilisateurs.\r\nUtilisation éventuelle de mot-clés et de critères de correspondance',1),(17,'Authentification / Fiche utilisateur','Gestion de l\'authentification des utilisateurs \r\nGestion des informations personnelles des utilisateurs',2),(18,'Commentaires et notation de films','Gestion des commentaires et votes pour des films',2),(19,'Visualtisation des fiches films','Listing et détails des films',2),(20,'Gestion de playlist','Mise en place de playlists(favoris, à voir, pour une soirée, ...)',2),(21,'Recherche et tri','Possibilité de rechercher des films et de trier les données',2),(22,'Utilisation d\'une API publique','Exploitation des données en provenance d\'une API publique pour consulter et rechercher la liste des films',2),(23,'Gestion des animaus de compagnie','Gestion des données complètes des animaux de compagnie \r\nPhotos de profil\r\nCarnet vétérinaire\r\nVaccinations ...',3),(24,'Gestion des vétérinaires','Gestion des vétérinaires avec données de localisation',3),(25,'Agendas / RDV / Rappels','Gestion des agendas, planification des rendez-vous et rappels des RDV',3),(26,'Fiche vétérinaire','Gestion des informations utiles aux données médicales et vétérinaires de chaque animal',3),(27,'Graphe d\'évolution du poids','Suivi et visualisation sous forme de graphique de l\'évolution du poids de l\'animal',3),(28,'Rappel automatique des vaccins','Mise en place d\'un système de rappel automatique des vaccins obligatoires pour les animaux',3),(29,'Authentification obligatoire','Gestion de l\'authentification obligatoire des utilisateurs, patients, vétérinaires, ...',3);
+INSERT INTO `fonctionnalite` VALUES (1,'Inscription des participants','Gestion des inscriptions des participants incluant :\nInformations administratives nécessaires\nPréférences\n\n',4),(2,'Enregistrement des équipes de 2 participants','Gestion de la constitution des équipes',4),(3,'Gestion d\'équipes masculines / féminines','Gestion des équipes par catégories / genres',4),(4,'Gestion des catégories d\'équipes','Gestion des catégories d\'équipes ',4),(5,'Consitution des poules avec gestion des préférences des participants','Attribution des poules et affectation des équipes / participants',4),(6,'Planificiation des matchs','Gestion des planning de tournoi et des matchs en fonction des préférences des participants',4),(7,'Authentification','Système d\'authentification',4),(12,'Gestion des utilisateurs','Inscription, connexion et profil des utilisateurs',1),(13,'Gestion des rêves','Saisie et consultation des rêves par utilisateur',1),(14,'Système de votes','Implémentation d\'un système de vote pour que les utilisateurs puissent voter pour le rêve d\'un autre utilisateur',1),(15,'Salon de discussion','Mise en place d\'un salon de discussion pour échanger entre utilisateurs',1),(16,'Correspondance / Matching des rêves par classification ','Mise en place d\'un algorithme de matching entre les rêves des utilisateurs.\r\nUtilisation éventuelle de mot-clés et de critères de correspondance',1),(17,'Authentification / Fiche utilisateur','Gestion de l\'authentification des utilisateurs \r\nGestion des informations personnelles des utilisateurs',2),(18,'Commentaires et notation de films','Gestion des commentaires et votes pour des films',2),(19,'Visualtisation des fiches films','Listing et détails des films',2),(20,'Gestion de playlist','Mise en place de playlists(favoris, à voir, pour une soirée, ...)',2),(21,'Recherche et tri','Possibilité de rechercher des films et de trier les données',2),(22,'Utilisation d\'une API publique','Exploitation des données en provenance d\'une API publique pour consulter et rechercher la liste des films',2),(23,'Gestion des animaus de compagnie','Gestion des données complètes des animaux de compagnie \r\nPhotos de profil\r\nCarnet vétérinaire\r\nVaccinations ...',3),(24,'Gestion des vétérinaires','Gestion des vétérinaires avec données de localisation',3),(25,'Agendas / RDV / Rappels','Gestion des agendas, planification des rendez-vous et rappels des RDV',3),(26,'Fiche vétérinaire','Gestion des informations utiles aux données médicales et vétérinaires de chaque animal',3),(27,'Graphe d\'évolution du poids','Suivi et visualisation sous forme de graphique de l\'évolution du poids de l\'animal',3),(28,'Rappel automatique des vaccins','Mise en place d\'un système de rappel automatique des vaccins obligatoires pour les animaux',3),(29,'Authentification obligatoire','Gestion de l\'authentification obligatoire des utilisateurs, patients, vétérinaires, ...',3),(30,'Authentification obligatoire agent / client','Mise en place d\'un système d\'authnetification pour les agents / clients / prestataires',12),(31,'Gestion des clients','Mise ne place de la gestion des fiches cient',12),(32,'Gestion des documents','Stockage, partage et eploitation des documents par les agentes / clients / prestataires',12),(33,'Notification de mise en ligne de nouveaux documents','Mise en place d\'un système de notification lors de la mise en ligne',12),(34,'Présentation d\'un humoriste','Mise en place d\'une page de présentation générale d\'un humoriste',6),(35,'Inscription + commentaires','Mise en place d\'un système d\'inscription pour les visiteurs et de commentaires  ',6),(36,'Mise en ligne de sketches','Gestion de la mise en ligne de sketches par l\'humoriste',6),(37,'Mise en ligne de chroniques','Gestion de la publication de chroniques par l\'humoriste',6),(38,'Mise en lige de tournée','Gestion de la mise en ligne de tournées par l\'humoriste',6),(39,'Billeterie','Possibilité de réserver un spectacle par une redirection directe sur la page de la fnac',6),(40,'Authentification','Mise en place d\'un système d\'authentification, inscription',9),(41,'Gestion des questionnaires ','Mise en place d\'un système de parcours, gestion et mise en ligne des questionnaires',9),(42,'Gestion des leçons','Mise en place du parcours pédagogique et du contenu des leçons / thématiques ',9),(43,'Validations par QCM et questions diverses ','Implémentation de QCM avec réponses corrigées',9),(44,'Authentification','Mise en place d\'un système d\'authentification / inscription',11),(45,'Gestion artistes / concerts','Mise en place d\'un système de gestion des artistes / groupes / concerts',11),(46,'Agenda','Mise en place de la gestion de plannification et mise en ligne des agendas de concerts',11),(47,'Billeterie','Mise en place d\'un système de réservation de billets en partenariat avec la Fnac',11),(48,'Espace membre','Mise en place de l\'espace membre pour profil / commentaires / partages',11),(49,'Présentation de l\'art','Mise en ligne de la présentation de l\'art Huichol',15),(50,'Publication des oeuvres','Gestion de la publication des informations sur les oeuvres réalisées par les Chamans',15),(51,'Inscription profil sportif','Gestion du profil du sportif (inscription, connexion, espace privé)',8),(52,'Suivi de programmes / avancement dans les exercices ','Mise en ligne de programmes de coaching et suivi de l\'avancement dans le programme\r\nAccompagnement sur la réalisation des exercices',8),(53,'Suivi des calories / poids','Mise en place d\'un système de suivi de l\'évolution des calories / poids périodique',8),(54,'Gestion des exercices / instructions / vidéos','Publication du contenu des exercices\r\nInstructions à suivre sur les exercices \r\nLiens avec les vidéos des coachs sur les explications nécessaires à la bonne réalisation des exercices ',8),(55,'Inscription des utilisateurs','Mise en place d\'un système d\'enregistrement et d\'inscription des utilisateurs',5),(56,'Espace privé','Gestion des données personnelles pour le profil / affinités',5),(57,'Gestion des jeux','Mise en place de la gestion des jeux (récupération possible par API)',5),(58,'Gestion des plateformes','Mise en place d\'un système de gestion des plateformes disponibles (consoles, PC, ...)',5),(59,'Gestion des sessions','Mise en place d\'un système de gestion des sessions planifiées et suivi des sessions',5),(60,'Dashboard historique de jeux','Mise en place d\'un dashboard de suivi et d\'historique des parties et sessions',5),(61,'Présentaton des réalisations par catégorie','Mise en place de la présentation des réalisation avec classement par catégorie',10),(62,'Demande de devis','Mise en place d\'un formulaire de demande de devis personnalisé',10),(63,'Gestion des boutiques ','Mise en place d\'un système de gestion des boutiques avec localisation et contact',10),(64,'Gestion des réalisations','Mise en place d\'un système de saisie et enregistrement des réalisations ',10),(65,'Gestion des livres','Mise en place d\'un système de gestion des livres dans la bibliothèque avec les genres et informations spécifiques (auteurs, éditeurs, ...)',13),(66,'Gestion des auteurs','Mise en place d\'un système de gestion des auteurs ',13),(67,'Commentaires et notations','Systèle de gestion des commentaires et de notations sur les livres et les oeuvres',13),(68,'Recherche et publication avec partage','Mise en place de la recherche par catégories, livre\r\nPartage et publication des informations liés à une oeuvre',13),(69,'Gestion des listes de lectures','Mise en place d\'un système de gestion des listes de lecture (A Lire, Lu, Favoris, ...)',13),(70,'Formulaire de contact','Mise en place d\'un formulaire de contact',7),(71,'Questionnaire de qualifaction','Mise en place d\'un système de questionnaire à remplir par les visiteurs pour qualifier les rendez-vous à prendre par la thérapeute',7),(72,'Planning et Prise de rendez-vous','Organisation et planification des rendez-vous par la thérapeute',7),(73,'Tutos / Conseils / Vidéos','Mise en ligne de tutos / conseils / vidéos sous la forme d\'un blog',7),(74,'Authentification','Mise en place d\'un système d\'autentification et inscription utilisateur / thérapeute',7);
 /*!40000 ALTER TABLE `fonctionnalite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +231,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `intervenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `intervenant` (
   `id_intervenant` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE `intervenant` (
   PRIMARY KEY (`id_intervenant`),
   KEY `FK_INT_PERS` (`id_personne`),
   CONSTRAINT `FK_INT_PERS` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +260,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `obtenir`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `obtenir` (
   `id_apprenant` int NOT NULL,
   `id_titre` int NOT NULL,
@@ -269,7 +269,7 @@ CREATE TABLE `obtenir` (
   KEY `FK_OBT_TIT` (`id_titre`),
   CONSTRAINT `FK_OBT_APP` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`),
   CONSTRAINT `FK_OBT_TIT` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id_titre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,13 +287,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `personne`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personne` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `projet`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `projet` (
   `id_projet` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) DEFAULT NULL,
@@ -324,7 +324,7 @@ CREATE TABLE `projet` (
   PRIMARY KEY (`id_projet`),
   KEY `projet_apprenant_FK` (`id_apprenant`),
   CONSTRAINT `projet_apprenant_FK` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +333,7 @@ CREATE TABLE `projet` (
 
 LOCK TABLES `projet` WRITE;
 /*!40000 ALTER TABLE `projet` DISABLE KEYS */;
-INSERT INTO `projet` VALUES (1,'Plateforme de rencontre match par les rêves','L\'objectif du projet est de proposer un site  de rencontre sur lequel la correspondance des profils et les rêves des personnes seront des critères d\'affinité entre les personnes inscrites.',NULL,'Organisation de rencontres (Lieux, Horaires, ...)','2023-02-02',12),(2,'Plateforme référence sur le cinéma','L\'objectif est de proposer un site permettant de chercher et consulter tous les films possibles et de créer si besoin une playliste, marquer des films vu, à voir ou en favoris et de commenter ces films ','Utilisation d\'une API externe pour le listing des films présentés','Propositions de films par intérêts, API Allociné pour le cinéma, API IMBD / TheMovieDB','2023-02-02',5),(3,'Gestion de carnet de santé vétérinaire','L\'objectif est de proposer un espace \"Carnet de santé\" pour les vétérinaires et animaux de compagnie','Utilisation d\'une API Externe de géolocalisation et d\'une API pour les races','Intégrer d\'autres catégories d\'animaux que chiens et chats, assistance à la recherche de vétérinaires','2023-02-02',4),(4,'Tournois de pelote basque','L\'objectif est de réaliser une plateforme de suivi et gestion des tournois de pelote basque incluant consitution des équipes et suivi des résultats','Mise en oeuvre de procédures stockées sous MySQL\r\nLogique priorisée en BDD','Historisation des matchs et statistiques','2023-02-02',1),(5,'Plateforme d\'organisation de sessions de jeux en ligne','L\'objectif est de proposer une plateforme de mise en place de sessions de jeux vidéos avec la possibilité pour les utilisateurs de choisir de rejoindre une partie ou d\'en héberger une.',NULL,'Organisation de tournois','2023-02-02',10),(6,'Site d\'un humoriste','L\'objectif du projet est de proposer un site de présentation d\'un humoriste, de ses sketches et ses tournées, avec possibilité de réserver des billets en ligne et de demander des devis pour l\'organisation d\'un événement dont l\'artiste sera l\'animateur',NULL,'Planification de tournées','2023-02-02',3),(7,'Site vitrine Thérapeute','L\'objectif est de proposer un site de présentation et d\'information en lien avec un thérapeute ',NULL,NULL,'2023-02-02',14),(8,'Plateforme coaching sportif','L\'objectif est de proposer une plateforme de suivi de programme sportif, avec mise en place de programme, d\'exercices et de cycles ainsi qu\'un dashboard sur l\'évolution du poids, des calories, ...',NULL,NULL,'2023-02-02',9),(9,'OpenClassroom de l\'élaboration du vin','L\'objectif est de proposer une plateforme d\'apprentissage dans le métier du vin, leçons, tutos, exercices et ateliers',NULL,'Récompenses par module de leçon, partenariats','2023-02-02',6),(10,'Vitrine patisserie','L\'objectif est présenter les réalisation d\'une patisserie avec détails, commentaire et demande de devis',NULL,'Ateliers et tutos','2023-02-02',11),(11,'Gestion salle de concerts','L\'objectif est de proposer une plateforme de gestion et d\'organisation de concerts, avec détails sur les artistes, la planification des concerts, la billeterie.',NULL,'Demande de devis artiste, blog sur les concerts','2023-02-02',7),(12,'Platefrome GED agences immobilières','L\'objectif est de proposer une mise en relation et un échange des documents entre locataires, agence et prestataires.',NULL,'Messagerie, Agenda, Outils externes liés','2023-02-02',2),(13,'Plateforme bibliothèque','L\'objectif est de proposer une mise en ligne des livres disponibles dans sa bilbiothèque, avec interactions avec des utilisateurs, livrs favoris, livres à lire, livres lus, ...',NULL,'Ouverture à une communauté avec propositions de livres à lire, lien avec une API des livres en vedette, assistant de saisie des infos par scan de l\'ISBN et recherche dans API','2023-02-02',13);
+INSERT INTO `projet` VALUES (1,'Plateforme de rencontre match par les rêves','L\'objectif du projet est de proposer un site  de rencontre sur lequel la correspondance des profils et les rêves des personnes seront des critères d\'affinité entre les personnes inscrites.',NULL,'Organisation de rencontres (Lieux, Horaires, ...)','2023-02-02',12),(2,'Plateforme référence sur le cinéma','L\'objectif est de proposer un site permettant de chercher et consulter tous les films possibles et de créer si besoin une playliste, marquer des films vu, à voir ou en favoris et de commenter ces films ','Utilisation d\'une API externe pour le listing des films présentés','Propositions de films par intérêts, API Allociné pour le cinéma, API IMBD / TheMovieDB','2023-02-02',5),(3,'Gestion de carnet de santé vétérinaire','L\'objectif est de proposer un espace \"Carnet de santé\" pour les vétérinaires et animaux de compagnie','Utilisation d\'une API Externe de géolocalisation et d\'une API pour les races','Intégrer d\'autres catégories d\'animaux que chiens et chats, assistance à la recherche de vétérinaires','2023-02-02',4),(4,'Tournois de pelote basque','L\'objectif est de réaliser une plateforme de suivi et gestion des tournois de pelote basque incluant consitution des équipes et suivi des résultats','Mise en oeuvre de procédures stockées sous MySQL\r\nLogique priorisée en BDD','Historisation des matchs et statistiques','2023-02-02',1),(5,'Plateforme d\'organisation de sessions de jeux en ligne','L\'objectif est de proposer une plateforme de mise en place de sessions de jeux vidéos avec la possibilité pour les utilisateurs de choisir de rejoindre une partie ou d\'en héberger une.',NULL,'Organisation de tournois','2023-02-02',10),(6,'Site d\'un humoriste','L\'objectif du projet est de proposer un site de présentation d\'un humoriste, de ses sketches et ses tournées, avec possibilité de réserver des billets en ligne et de demander des devis pour l\'organisation d\'un événement dont l\'artiste sera l\'animateur',NULL,'Planification de tournées','2023-02-02',3),(7,'Site vitrine Thérapeute','L\'objectif est de proposer un site de présentation et d\'information en lien avec un thérapeute ',NULL,NULL,'2023-02-02',14),(8,'Plateforme coaching sportif','L\'objectif est de proposer une plateforme de suivi de programme sportif, avec mise en place de programme, d\'exercices et de cycles ainsi qu\'un dashboard sur l\'évolution du poids, des calories, ...','','Contact / Messagerie / Chat','2023-02-02',9),(9,'OpenClassroom de l\'élaboration du vin','L\'objectif est de proposer une plateforme d\'apprentissage dans le métier du vin, leçons, tutos, exercices et ateliers',NULL,'Récompenses par module de leçon, partenariats','2023-02-02',6),(10,'Vitrine patisserie','L\'objectif est présenter les réalisation d\'une patisserie avec détails, commentaire et demande de devis',NULL,'Ateliers et tutos','2023-02-02',11),(11,'Gestion salle de concerts','L\'objectif est de proposer une plateforme de gestion et d\'organisation de concerts, avec détails sur les artistes, la planification des concerts, la billeterie.',NULL,'Demande de devis artiste, blog sur les concerts','2023-02-02',7),(12,'Platefrome GED agences immobilières','L\'objectif est de proposer une mise en relation et un échange des documents entre locataires, agence et prestataires.',NULL,'Messagerie, Agenda, Outils externes liés','2023-02-02',2),(13,'Plateforme bibliothèque','L\'objectif est de proposer une mise en ligne des livres disponibles dans sa bilbiothèque, avec interactions avec des utilisateurs, livrs favoris, livres à lire, livres lus, ...',NULL,'Ouverture à une communauté avec propositions de livres à lire, lien avec une API des livres en vedette, assistant de saisie des infos par scan de l\'ISBN et recherche dans API','2023-02-02',13),(15,'Site d\'information l\'art Huichol','Site de présentation de l\'art Huichol intégrant la publication d\'oeuvres réalisées par les Chamans','','','2023-02-16',8);
 /*!40000 ALTER TABLE `projet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +343,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `promotion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promotion` (
   `id_promo` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) NOT NULL,
@@ -353,7 +353,7 @@ CREATE TABLE `promotion` (
   PRIMARY KEY (`id_promo`),
   KEY `promotion_FK` (`id_titre`),
   CONSTRAINT `promotion_FK` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id_titre`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,7 +372,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `referentiel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `referentiel` (
   `id_referentiel` int NOT NULL AUTO_INCREMENT,
   `num_rncp` varchar(50) NOT NULL,
@@ -384,7 +384,7 @@ CREATE TABLE `referentiel` (
   `competences_attestees` text,
   `modalite_evaluation` text,
   PRIMARY KEY (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,7 +403,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `suivi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `suivi` (
   `id_suivi` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
@@ -415,7 +415,7 @@ CREATE TABLE `suivi` (
   KEY `suivi_projet0_FK` (`id_projet`),
   CONSTRAINT `suivi_intervenant_FK` FOREIGN KEY (`id_intervenant`) REFERENCES `intervenant` (`id_intervenant`),
   CONSTRAINT `suivi_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,7 +424,7 @@ CREATE TABLE `suivi` (
 
 LOCK TABLES `suivi` WRITE;
 /*!40000 ALTER TABLE `suivi` DISABLE KEYS */;
-INSERT INTO `suivi` VALUES (1,'2023-02-02','Base de donnée finalisée en grande partie\r\nEcriture en cours de l\'algorithme de consitution des poules et rencontres\r\nConstruction en cours du formulaire d\'inscription\r\n',1,4),(2,'2023-02-02','Base de données en cours de réalisation\r\nMaquette à réaliser',1,1),(3,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,2),(4,'2023-02-02','Base de données réalisée\r\nMAquette en cours de réalisation',1,3);
+INSERT INTO `suivi` VALUES (1,'2023-02-02','Base de donnée finalisée en grande partie\r\nEcriture en cours de l\'algorithme de consitution des poules et rencontres\r\nConstruction en cours du formulaire d\'inscription\r\n',1,4),(2,'2023-02-02','Base de données en cours de réalisation\r\nMaquette à réaliser',1,1),(3,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,2),(4,'2023-02-02','Base de données réalisée\r\nMAquette en cours de réalisation',1,3),(5,'2023-02-22','Base de données finalisée \r\nReste à terminer : Procédures stockées \r\nMaquette terminée\r\nModèles de page HTML ok \r\nRete à inclure le moteur (PHP - BDD)',1,4),(6,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,12),(7,'2023-02-02','Base de données à réaliser\r\nMaquettes en cours de réalisation',1,6),(8,'2023-02-22','Base de données terminée\r\nMaquettes terminées \r\nMise en place du MVC et CRUD pour les sketches, les chroniques et les tournées \r\nReste à faire les commentaires \r\nReste à faire authentification',1,6),(9,'2023-02-22','Base de données terminée\r\nMaquettes terminées\r\nMise en page terminée\r\nAuthentification terminée\r\nReste le CRUD sur les animaux / vétérinaires',1,3),(10,'2023-02-22','Base de données terminée\r\nMaquettes terminées\r\nExploitation de l\'API de TheMovieDB terminée pour le listing et la recherche\r\nMise en page et présentation des films OK\r\nAuthentification en cours \r\nReste à faire la page de déatils d\'un film \r\nReste à faire la gestion des playlists : Favoris, A Voir, ...',1,2),(11,'2023-02-02','Base de données en cours de réalisation\r\nMaquettes en cours de réalisation',1,9),(12,'2023-02-22','Base de données terminée en grande partie\r\nMaquettes terminées\r\nMise en page terminée\r\nAuthentification à terminer\r\nCRUD des questions ok\r\nMise en ligne des leçons et des contenus pédagogiques / questionnaires et sous-thèmes',1,9),(13,'2023-02-02','Base de données à réaliser\r\nMaquettes à réaliser',1,11),(14,'2023-02-16','Mise en place des maquettes \r\nMise en place de la structure et de la charte graphique',1,15),(15,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,8),(16,'2023-02-22','Base de données finalisée\r\nMaquettes finalisées\r\nAuthentification réalisée (reste la sécu du mot de passe haché)\r\nMise en ligne des programmes / exercices\r\nImplémentation JS de Chart.JS pour le graphe des poids \r\nreste à faire : Ressources à intégrer\r\nreste à faire : page contact\r\nCharte graphique à terminer',1,8),(17,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,5),(18,'2023-02-22','Authentification terminée\r\ngestion des sessions terminée\r\ncharte graphique ok\r\nreste à faire : gestion des utilisateurs, des jeux et des plateformes\r\n',1,5),(19,'2023-02-02','Base de données à réaliser\r\nMaquette à réaliser',1,10),(20,'2023-02-22','Base de données terminée\r\nmaquette ok\r\nMise en place du design général / charte graphique\r\nArchitecture MVC en cours \r\nPrésentation des réalisations en cours ',1,10),(21,'2023-02-22','Base de données terminée\r\nMaquette terminée\r\nInscription / connexion ok\r\nProfil utilisateur ok \r\nreste à faire : saisie des rèves\r\nreste à faire : recherche et consultation des fiches utilisateurs\r\nSquelettes ok reste CSS',1,1),(22,'2023-02-02','Base de données en cours\r\nMaquette à réaliser',1,13),(23,'2023-02-22','Base de données terminée\r\nMaquette terminée\r\nEnregistrement et modification des livres ok\r\nGestion de la recherche en cours\r\nreste à faire : listes de lecture',1,13),(24,'2023-02-02','Base de données à réaliser\r\nMAquette à réaliser',1,7),(25,'2023-02-22','Base de données terminée\r\nMaquette ok\r\nArchitecture MVC en place\r\nAuthentification en cours\r\nMise en page et charte graphique en cours \r\nreste à faire : présentation de la thérapeute \r\nreste à faire : contenu des conseils / vidéos ',1,7),(26,'2023-02-22','Base de données ok\r\nmaquette ok\r\npage d\'accueil agent ok\r\nCRUD client ok\r\nStockage du document en cours \r\nreste à faire : gestion des incidents\r\nreste à faire : accès client\r\nreste à faire : authentification ',1,12);
 /*!40000 ALTER TABLE `suivi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -434,12 +434,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `technologie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `technologie` (
   `id_technologie` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
   PRIMARY KEY (`id_technologie`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +448,7 @@ CREATE TABLE `technologie` (
 
 LOCK TABLES `technologie` WRITE;
 /*!40000 ALTER TABLE `technologie` DISABLE KEYS */;
-INSERT INTO `technologie` VALUES (1,'Merise'),(2,'UML'),(3,'SQL'),(4,'HTML 5'),(5,'CSS 3'),(6,'JavaScript'),(7,'PHP'),(8,'MySQL'),(9,'Angular'),(10,'JQuery'),(11,'React.JS'),(12,'React Native'),(13,'Symfony'),(14,'Vue.JS'),(15,'Bootstrap'),(16,'Responsive');
+INSERT INTO `technologie` VALUES (1,'Merise'),(2,'UML'),(3,'SQL'),(4,'HTML 5'),(5,'CSS 3'),(6,'JavaScript'),(7,'PHP'),(8,'MySQL'),(9,'Angular'),(10,'JQuery'),(11,'React.JS'),(12,'React Native'),(13,'Symfony'),(14,'Vue.JS'),(15,'Bootstrap'),(16,'Responsive'),(17,'SASS'),(18,'Node.JS'),(19,'MVC'),(20,'POO');
 /*!40000 ALTER TABLE `technologie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +458,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `titre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `titre` (
   `id_titre` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) NOT NULL,
@@ -466,7 +466,7 @@ CREATE TABLE `titre` (
   PRIMARY KEY (`id_titre`),
   KEY `titre_rerentiel_FK` (`id_referentiel`),
   CONSTRAINT `titre_rerentiel_FK` FOREIGN KEY (`id_referentiel`) REFERENCES `referentiel` (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -485,7 +485,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `valider`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `valider` (
   `id_competence` int NOT NULL,
   `id_fonctionnalite` int NOT NULL,
@@ -493,7 +493,7 @@ CREATE TABLE `valider` (
   KEY `valider_fonctionnalite0_FK` (`id_fonctionnalite`),
   CONSTRAINT `valider_competence_FK` FOREIGN KEY (`id_competence`) REFERENCES `competence` (`id_competence`),
   CONSTRAINT `valider_fonctionnalite0_FK` FOREIGN KEY (`id_fonctionnalite`) REFERENCES `fonctionnalite` (`id_fonctionnalite`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,4 +514,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-21 18:03:21
+-- Dump completed on 2023-02-22 16:19:13
