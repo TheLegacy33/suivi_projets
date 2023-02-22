@@ -70,10 +70,10 @@
 				<label for="champPoids">Poids : </label>
 				<input type="number" name="chPoids" id="champPoids" value="<?= $unePersonne->getPoids() ?>">
 			</div>
-			<div>
-				<button type="submit">Valider</button>
-				<button type="reset">Réinitialiser</button>
-			</div>
+				<div class="actions">
+					<button class="btn btn-submit" type="submit" name="btSubmit">Valider</button>
+					<button class="btn btn-cancel" type="reset">Réinitialiser</button>
+				</div>
 			</form>
 		</section>
 		<?= $message ?? '' ?> 

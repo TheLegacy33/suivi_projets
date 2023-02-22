@@ -5,7 +5,7 @@
 
 	ini_set('display_errors', 'on');
 
-	var_dump(Session::getActiveSession());
+//	var_dump(Session::getActiveSession());
 
 	$page = $_GET['page'] ?? 'index';
 	$action = $_GET['action'] ?? 'view';

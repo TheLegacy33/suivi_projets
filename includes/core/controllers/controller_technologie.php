@@ -27,6 +27,7 @@
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
 
 			$lesTechnologies = DAOTechnologie::getAllNonAffectedToProject($idProjet);
+
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
 				$uneTechnologie = new Technologie();
@@ -43,10 +44,7 @@
 				header('Location: index.php?page=projet&action=view&id='.$idProjet.'#technologies');
 			}
 
-
-
 			require_once "includes/core/views/forms/form_technologie.phtml";
-			break;
 			break;
 		}
 

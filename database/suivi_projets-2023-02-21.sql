@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -19,7 +19,7 @@
 -- Current Database: `suivi_projets`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `suivi_projets` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `suivi_projets` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `suivi_projets`;
 
@@ -29,7 +29,7 @@ USE `suivi_projets`;
 
 DROP TABLE IF EXISTS `apprenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `apprenant` (
   `id_apprenant` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `apprenant` (
   KEY `FK_APP_PERS` (`id_personne`),
   CONSTRAINT `apprenant_promo_FK` FOREIGN KEY (`id_promo`) REFERENCES `promotion` (`id_promo`),
   CONSTRAINT `FK_APP_PERS` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `bloc_competence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `bloc_competence` (
   `id_bloc` int NOT NULL AUTO_INCREMENT,
   `code` varchar(50) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `bloc_competence` (
   PRIMARY KEY (`id_bloc`),
   KEY `bloc_competence_rerentiel_FK` (`id_referentiel`),
   CONSTRAINT `bloc_competence_rerentiel_FK` FOREIGN KEY (`id_referentiel`) REFERENCES `referentiel` (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `commentaire`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `commentaire` (
   `id_commentaire` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(250) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `commentaire` (
   PRIMARY KEY (`id_commentaire`),
   KEY `commentaire_intervenant_FK` (`id_intervenant`),
   CONSTRAINT `commentaire_intervenant_FK` FOREIGN KEY (`id_intervenant`) REFERENCES `intervenant` (`id_intervenant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `competence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `competence` (
   `id_competence` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE `competence` (
   PRIMARY KEY (`id_competence`),
   KEY `competence_bloc_competence_FK` (`id_bloc`),
   CONSTRAINT `competence_bloc_competence_FK` FOREIGN KEY (`id_bloc`) REFERENCES `bloc_competence` (`id_bloc`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `concerner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `concerner` (
   `id_fonctionnalite` int NOT NULL,
   `id_commentaire` int NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE `concerner` (
   CONSTRAINT `concerner_commentaire0_FK` FOREIGN KEY (`id_commentaire`) REFERENCES `commentaire` (`id_commentaire`),
   CONSTRAINT `concerner_fonctionnalite_FK` FOREIGN KEY (`id_fonctionnalite`) REFERENCES `fonctionnalite` (`id_fonctionnalite`),
   CONSTRAINT `concerner_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `exploiter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `exploiter` (
   `id_technologie` int NOT NULL,
   `id_projet` int NOT NULL,
@@ -184,7 +184,7 @@ CREATE TABLE `exploiter` (
   KEY `exploiter_projet0_FK` (`id_projet`),
   CONSTRAINT `exploiter_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`),
   CONSTRAINT `exploiter_technologie_FK` FOREIGN KEY (`id_technologie`) REFERENCES `technologie` (`id_technologie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +203,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fonctionnalite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `fonctionnalite` (
   `id_fonctionnalite` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
@@ -212,7 +212,7 @@ CREATE TABLE `fonctionnalite` (
   PRIMARY KEY (`id_fonctionnalite`),
   KEY `fonctionnalite_projet_FK` (`id_projet`),
   CONSTRAINT `fonctionnalite_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `intervenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `intervenant` (
   `id_intervenant` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE `intervenant` (
   PRIMARY KEY (`id_intervenant`),
   KEY `FK_INT_PERS` (`id_personne`),
   CONSTRAINT `FK_INT_PERS` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +260,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `obtenir`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `obtenir` (
   `id_apprenant` int NOT NULL,
   `id_titre` int NOT NULL,
@@ -269,7 +269,7 @@ CREATE TABLE `obtenir` (
   KEY `FK_OBT_TIT` (`id_titre`),
   CONSTRAINT `FK_OBT_APP` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`),
   CONSTRAINT `FK_OBT_TIT` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id_titre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,13 +287,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `personne`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `personne` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `projet`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `projet` (
   `id_projet` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) DEFAULT NULL,
@@ -324,7 +324,7 @@ CREATE TABLE `projet` (
   PRIMARY KEY (`id_projet`),
   KEY `projet_apprenant_FK` (`id_apprenant`),
   CONSTRAINT `projet_apprenant_FK` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +343,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `promotion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `promotion` (
   `id_promo` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) NOT NULL,
@@ -353,7 +353,7 @@ CREATE TABLE `promotion` (
   PRIMARY KEY (`id_promo`),
   KEY `promotion_FK` (`id_titre`),
   CONSTRAINT `promotion_FK` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id_titre`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,7 +372,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `referentiel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `referentiel` (
   `id_referentiel` int NOT NULL AUTO_INCREMENT,
   `num_rncp` varchar(50) NOT NULL,
@@ -384,7 +384,7 @@ CREATE TABLE `referentiel` (
   `competences_attestees` text,
   `modalite_evaluation` text,
   PRIMARY KEY (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,7 +403,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `suivi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `suivi` (
   `id_suivi` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
@@ -415,7 +415,7 @@ CREATE TABLE `suivi` (
   KEY `suivi_projet0_FK` (`id_projet`),
   CONSTRAINT `suivi_intervenant_FK` FOREIGN KEY (`id_intervenant`) REFERENCES `intervenant` (`id_intervenant`),
   CONSTRAINT `suivi_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,12 +434,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `technologie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `technologie` (
   `id_technologie` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(250) NOT NULL,
   PRIMARY KEY (`id_technologie`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -458,7 +458,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `titre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `titre` (
   `id_titre` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) NOT NULL,
@@ -466,7 +466,7 @@ CREATE TABLE `titre` (
   PRIMARY KEY (`id_titre`),
   KEY `titre_rerentiel_FK` (`id_referentiel`),
   CONSTRAINT `titre_rerentiel_FK` FOREIGN KEY (`id_referentiel`) REFERENCES `referentiel` (`id_referentiel`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -485,7 +485,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `valider`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `valider` (
   `id_competence` int NOT NULL,
   `id_fonctionnalite` int NOT NULL,
@@ -493,7 +493,7 @@ CREATE TABLE `valider` (
   KEY `valider_fonctionnalite0_FK` (`id_fonctionnalite`),
   CONSTRAINT `valider_competence_FK` FOREIGN KEY (`id_competence`) REFERENCES `competence` (`id_competence`),
   CONSTRAINT `valider_fonctionnalite0_FK` FOREIGN KEY (`id_fonctionnalite`) REFERENCES `fonctionnalite` (`id_fonctionnalite`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

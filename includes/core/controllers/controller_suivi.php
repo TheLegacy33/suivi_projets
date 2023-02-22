@@ -70,7 +70,7 @@
 				$unSuivi->setIdprojet($idProjet);
 
 				if (DAOSuivi::insert($unSuivi)){
-					header('Location: index.php?page=projet&action=view&id='.$unSuivi->getIdProjet());
+					header('Location: index.php?page=projet&action=view&id='.$unSuivi->getIdProjet().'#suivis');
 				}else{
 					$message = "Erreur d'enregistrement !";
 				}
