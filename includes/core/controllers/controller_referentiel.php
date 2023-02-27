@@ -1,7 +1,8 @@
 <?php
 	/**
 	 * @var Referentiel $unReferentiel
-	 * @var string $action;
+	 * @var string $action
+	 * @var bool $enableActions
 	 */
 
 

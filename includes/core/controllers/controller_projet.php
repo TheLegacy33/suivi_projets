@@ -2,7 +2,8 @@
 	/**
 	 * @var Projet $unProjet
 	 * @var Suivi $unSuivi
-	 * @var string $action;
+	 * @var string $action
+	 * @var bool $enableActions
 	 */
 
 	require_once "includes/core/models/DAO/DAOSuivi.php";

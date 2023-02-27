@@ -3,6 +3,7 @@
 	 * @var array $lesFonctionnalites
 	 * @var Fonctionnalite $uneFonctionnalite
 	 * @var string $action
+	 * @var bool $enableActions
 	 */
 
 	require_once "includes/core/models/DAO/DAOProjet.php";

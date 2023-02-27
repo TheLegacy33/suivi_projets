@@ -1,5 +1,8 @@
 <?php
-
+	/**
+	 * @var Promotion $newPromotion
+	 * @var Promotion $promoToDelete
+	 */
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Apprenant.php";
 
@@ -80,7 +83,7 @@
 			VALUES (:nom)";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':nom', $newApprenant->getNom(), PDO::PARAM_STR);
 
 			if (!$SQLStmt->execute()){
 				return false;
@@ -89,14 +92,14 @@
 			}
 		}
 
-		public static function delete(Apprenant $apprenantToDelete): bool{
+		public static function delete(Promotion $apprenantToDelete): bool{
 			$conn = parent::getConnexion();
 
 			$SQLQuery = "DELETE FROM promotion
 				WHERE id_promo = :id";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':id', $promoToDelete->getId(), PDO::PARAM_INT);
+			$SQLStmt->bindValue(':id', $apprenantToDelete->getId(), PDO::PARAM_INT);
 			return $SQLStmt->execute();
 		}
 
@@ -106,8 +109,8 @@
 			$SQLQuery = "UPDATE promotion SET nom = :nom WHERE id_promo = :id";
 
 			$SQLStmt = $conn->prepare($SQLQuery);
-			$SQLStmt->bindValue(':nom', $newPromotion->getNom(), PDO::PARAM_STR);
-			$SQLStmt->bindValue(':id', $newPromotion->getId(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':nom', $newApprenant->getNom(), PDO::PARAM_STR);
+			$SQLStmt->bindValue(':id', $newApprenant->getId(), PDO::PARAM_STR);
 
 			if (!$SQLStmt->execute()){
 				return false;

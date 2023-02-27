@@ -1,7 +1,8 @@
 <?php
 	/**
 	 * @var User $unUser
-	 * @var string $action;
+	 * @var string $action
+	 * @var bool $enableActions
 	 */
 
 	switch ($action){

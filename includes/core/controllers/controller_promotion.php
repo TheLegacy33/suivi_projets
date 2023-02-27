@@ -1,7 +1,8 @@
 <?php
 	/**
 	 * @var Promotion $unePromotion
-	 * @var string $action;
+	 * @var string $action
+	 * @var bool $enableActions
 	 */
 
 	require_once "includes/core/models/DAO/DAOTitre.php";
