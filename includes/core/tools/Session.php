@@ -60,7 +60,9 @@
 
 		public static function initialise(string $appName): void{
 			if (session_status() == PHP_SESSION_NONE || empty($_SESSION)){
+
 				self::$activeSession = new Session(session_create_id(), $appName);
+				self::$activeSession->setUser(new User(''));
 			}else{
 				self::$activeSession = $_SESSION[$appName];
 			}

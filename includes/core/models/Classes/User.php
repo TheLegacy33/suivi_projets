@@ -4,16 +4,19 @@
 		private string $login, $password;
 		private bool $authentified;
 
+		private Apprenant | Intervenant | null $personne;
+
 		/**
 		 * @param string $login
 		 * @param string $password
 		 * @param bool   $authentified
 		 */
-		public function __construct(string $login, string $password, bool $authentified = false){
+		public function __construct(string $login, string $password = '', bool $authentified = false){
 			$this->id = 0;
 			$this->login = $login;
 			$this->password = $password;
 			$this->authentified = $authentified;
+			$this->personne = null;
 		}
 
 		/**
@@ -70,5 +73,19 @@
 		 */
 		public function setAuthentified(bool $authentified): void{
 			$this->authentified = $authentified;
+		}
+
+		/**
+		 * @return Apprenant|Intervenant|null
+		 */
+		public function getPersonne(): Apprenant|Intervenant|null{
+			return $this->personne;
+		}
+
+		/**
+		 * @param Apprenant|Intervenant|null $personne
+		 */
+		public function setPersonne(Apprenant|Intervenant|null $personne): void{
+			$this->personne = $personne;
 		}
 	}
