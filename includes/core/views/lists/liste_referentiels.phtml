@@ -20,7 +20,10 @@
 					<th colspan="2">Actions</th>
 				</thead>
 				<caption>
-					<a href="index.php?page=contact&action=add">Ajouter un contact</a>
+					<?php if ($enableActions): ?>
+						<a href="index.php?page=referentiel&action=add">Ajouter un référentiel</a>
+					<?php endif; ?>
+
 				</caption>
 				<tbody>
 					<?php

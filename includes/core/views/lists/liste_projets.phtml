@@ -28,7 +28,10 @@
 					</tr>
 				</thead>
 				<caption>
-					<a href="index.php?page=projet&action=add&idapprenant=<?= $unApprenant->getId() ?>">Ajouter un projet</a>
+					<?php if ($enableActions): ?>
+						<a href="index.php?page=projet&action=add&idapprenant=<?= $unApprenant->getId() ?>">Ajouter un projet</a>
+					<?php endif; ?>
+
 				</caption>
 				<tbody>
 					<?php
@@ -37,12 +40,14 @@
 							$script .= '<tr>';
 							$script .= '<td><a title="Voir les détails du projet" href="index.php?page=projet&action=view&id='.$unProjet->getId().'">'.$unProjet->getNom().'</a></td>';
 							$script .= '<td>'.$unProjet->getDateDebut()->format('d/m/Y').'</td>';
-							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#suivis">'.$unProjet->getNbSuivis().'</a><a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
-							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#fonctionnalites">'.$unProjet->getNbFonctionnalites().'</a><a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
-							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#technologies">'.$unProjet->getNbTechnologies().'</a><a title="Nouvelle technologie" href="index.php?page=technologie&action=addtoproject&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a></div></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#suivis">'.$unProjet->getNbSuivis().'</a>'.($enableActions ? '<a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a>' : '').'</div></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#fonctionnalites">'.$unProjet->getNbFonctionnalites().'</a>'.($enableActions ? '<a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a>' : '').'</div></td>';
+							$script .= '<td><div><a title="Voir" href="index.php?page=projet&action=view&id='.$unProjet->getId().'#technologies">'.$unProjet->getNbTechnologies().'</a>'.($enableActions ? '<a title="Nouvelle technologie" href="index.php?page=technologie&action=addtoproject&idprojet='.$unProjet->getId().'"><img class="mini" src="./public/medias/plus_blue.png"/></a>' : '').'</div></td>';
 							$script .= '<td class="actions">';
-							$script .= '<a title="Modifier le projet" href="index.php?page=projet&action=edit&id='.$unProjet->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-							$script .= '<a title="Supprimer le projet" data-action="deletelink" href="index.php?page=projet&action=delete&id='.$unProjet->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							if ($enableActions){
+								$script .= '<a title="Modifier le projet" href="index.php?page=projet&action=edit&id='.$unProjet->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+								$script .= '<a title="Supprimer le projet" data-action="deletelink" href="index.php?page=projet&action=delete&id='.$unProjet->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							}
 							$script .= '</td>';
 							$script .= '</tr>';
 						}

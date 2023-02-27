@@ -22,6 +22,9 @@
 			break;
 		}
 		case 'edit':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$id = $_GET['id'] ?? 0;
 			$unSuivi = DAOSuivi::getById($id);
 			$unProjet = DAOProjet::getById($unSuivi->getIdprojet());
@@ -43,6 +46,9 @@
 			break;
 		}
 		case 'delete':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			if (isset($_GET['id'])){
 				if (DAOSuivi::delete(DAOSuivi::getById(intval($_GET['id'])))){
 					header("Location: index.php?page=promotion&action=list");
@@ -58,6 +64,9 @@
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idProjet = $_GET['idprojet'] ?? 0;
 			$unProjet = DAOProjet::getById($idProjet);
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
@@ -80,6 +89,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

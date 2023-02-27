@@ -50,6 +50,9 @@
 			break;
 		}
 		case 'edit':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idProjet = $_GET['id'] ?? 0;
 
 			$unProjet = DAOProjet::getById($idProjet);
@@ -81,6 +84,9 @@
 			break;
 		}
 		case 'delete':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idProjet = $_GET['id'] ?? 0;
 
 			$unProjet = DAOProjet::getById($idProjet);
@@ -94,6 +100,9 @@
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idApprenant = $_GET['idapprenant'] ?? 0;
 			$unApprenant = DAOApprenant::getById($idApprenant);
 			$unApprenant->setPromotion(DAOPromotion::getById($unApprenant->getIdPromo()));
@@ -121,6 +130,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

@@ -19,6 +19,9 @@
 			break;
 		}
 		case 'edit':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$id = $_GET['id'] ?? 0;
 			$unePromotion = DAOPromotion::getById($id);
 			if (!empty($_POST)){
@@ -37,6 +40,9 @@
 			break;
 		}
 		case 'delete':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			if (isset($_GET['id'])){
 				if (DAOPromotion::delete(DAOPromotion::getById(intval($_GET['id'])))){
 					header("Location: index.php?page=promotion&action=list");
@@ -52,6 +58,9 @@
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
 				$unePromotion = new Promotion();
@@ -80,6 +89,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

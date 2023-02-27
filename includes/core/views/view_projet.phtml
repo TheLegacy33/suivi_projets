@@ -46,7 +46,7 @@
 				</section>
 				<section class="fonctionnalites">
 					<a id="fonctionnalites"></a>
-					<h3>Fonctionnalités : <a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
+					<h3>Fonctionnalités : <?= ($enableActions ? '<a title="Nouvelle fonctionnalité" href="index.php?page=fonctionnalite&action=add&idprojet='.$unProjet->getId().'"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a>' : '') ?></h3>
 					<?php
 						if ($unProjet->getNbFonctionnalites() == 0){
 							$script = "<p>Aucune fonctionnalité n'est actuellement associée à ce projet !</p>";
@@ -55,12 +55,14 @@
 							foreach ($unProjet->getFonctionnalites() as $uneFonctionnalite){
 								$script .= '<li>';
 								$script .= $uneFonctionnalite->getLibelle();
-								$script .= '<a href="index.php?page=fonctionnalite&action=edit&id='.$uneFonctionnalite->getId().'" title="Modifier">';
-								$script .= '<img class="mini w-10 h-10" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
-								$script .= '</a>';
-								$script .= '<a data-action="deletelink" href="index.php?page=fonctionnalite&action=delete&id='.$uneFonctionnalite->getId().'" title="Supprimer">';
-								$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
-								$script .= '</a>';
+								if ($enableActions){
+									$script .= '<a href="index.php?page=fonctionnalite&action=edit&id='.$uneFonctionnalite->getId().'" title="Modifier">';
+									$script .= '<img class="mini w-10 h-10" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
+									$script .= '</a>';
+									$script .= '<a data-action="deletelink" href="index.php?page=fonctionnalite&action=delete&id='.$uneFonctionnalite->getId().'" title="Supprimer">';
+									$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+									$script .= '</a>';
+								}
 								$script .= '</li>';
 							}
 							$script .= '</ul>';
@@ -70,7 +72,7 @@
 				</section>
 				<section class="technologies">
 					<a id="technologies"></a>
-					<h3>Technologies : <a title="Nouvelle technologie" href="index.php?page=technologie&action=addtoproject&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
+					<h3>Technologies : <?= ($enableActions ? '<a title="Nouvelle technologie" href="index.php?page=technologie&action=addtoproject&idprojet='.$unProjet->getId().'"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a>' : '') ?></h3>
 					<?php
 						if ($unProjet->getNbTechnologies() == 0){
 							$script = "<p>Aucune technologie n'est actuellement associée à ce projet !</p>";
@@ -79,9 +81,11 @@
 							foreach ($unProjet->getTechnologies() as $uneTechnologie){
 								$script .= '<li>';
 								$script .= $uneTechnologie->getLibelle();
-								$script .= '<a data-action="deletelink" href="index.php?page=technologie&action=removefromproject&idprojet='.$unProjet->getId().'&idtechnologie='.$uneTechnologie->getId().'" title="Supprimer">';
-								$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
-								$script .= '</a>';
+								if ($enableActions){
+									$script .= '<a data-action="deletelink" href="index.php?page=technologie&action=removefromproject&idprojet=' . $unProjet->getId() . '&idtechnologie=' . $uneTechnologie->getId() . '" title="Supprimer">';
+									$script .= '<img class="mini w-10 h-10" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+									$script .= '</a>';
+								}
 								$script .= '</li>';
 							}
 							$script .= '</ul>';
@@ -91,7 +95,7 @@
 				</section>
 				<section class="suivis">
 					<a id="suivis"></a>
-					<h3>Suivis : <a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet=<?= $unProjet->getId() ?>"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a></h3>
+					<h3>Suivis : <?= ($enableActions ? '<a title="Nouveau suivi" href="index.php?page=suivi&action=add&idprojet='.$unProjet->getId().'"><img class="mini w-12 h-12" src="./public/medias/plus_blue.png"/></a>' : '') ?></h3>
 					<?php
 						if ($unProjet->getNbSuivis() == 0){
 							$script = "<p>Aucun suivi n'est actuellement associé à ce projet !</p>";
@@ -103,12 +107,14 @@
 										$script .= $unSuivi->getDateSuivi()->format('d/m/Y');
 										$script .= ' - par : ';
 										$script .= $unSuivi->getIntervenant()->getFullName();
-										$script .= '<a href="index.php?page=suivi&action=edit&id='.$unSuivi->getId().'" title="Modifier ce suivi">';
-										$script .= '<img class="mini w-16 h-16" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
-										$script .= '</a>';
-										$script .= '<a data-action="deletelink" href="index.php?page=suivi&action=delete&id='.$unSuivi->getId().'" title="Supprimer ce suivi">';
-										$script .= '<img class="mini w-16 h-16" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
-										$script .= '</a>';
+										if ($enableActions){
+											$script .= '<a href="index.php?page=suivi&action=edit&id=' . $unSuivi->getId() . '" title="Modifier ce suivi">';
+											$script .= '<img class="mini w-16 h-16" src="./public/medias/stylo_edit.png" alt="Supprimer"/>';
+											$script .= '</a>';
+											$script .= '<a data-action="deletelink" href="index.php?page=suivi&action=delete&id=' . $unSuivi->getId() . '" title="Supprimer ce suivi">';
+											$script .= '<img class="mini w-16 h-16" src="./public/medias/croix_rouge.png" alt="Supprimer"/>';
+											$script .= '</a>';
+										}
 									$script .= '</header>';
 									$script .= '<p>'.nl2br($unSuivi->getCommentaire()).'</p>';
 								$script .= '</section>';

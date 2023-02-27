@@ -28,14 +28,21 @@
 			break;
 		}
 		case 'edit':{
-
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 		case 'delete':{
-		
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			require_once "includes/core/models/DAO/DAOPromotion.php";
 			require_once "includes/core/models/DAO/DAOCivilite.php";
 			require_once "includes/core/models/DAO/DAOCpVille.php";
@@ -72,6 +79,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

@@ -2,7 +2,7 @@
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Intervenant.php";
 
-	class DAOIntervenant extends BDD{
+	abstract class DAOIntervenant extends BDD{
 		public static function getAll(): array{
 			$conn = parent::getConnexion();
 

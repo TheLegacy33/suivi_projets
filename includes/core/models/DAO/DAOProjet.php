@@ -2,7 +2,7 @@
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Projet.php";
 
-	class DAOProjet extends BDD{
+	abstract class DAOProjet extends BDD{
 		public static function getAllByIdApprenant(int $idApprenant): array{
 			$conn = parent::getConnexion();
 

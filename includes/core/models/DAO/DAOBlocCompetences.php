@@ -2,7 +2,7 @@
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/BlocCompetence.php";
 
-	class DAOBlocCompetences extends BDD{
+	abstract class DAOBlocCompetences extends BDD{
 		public static function getByIdReferentiel(int $idReferentiel): array{
 			$conn = parent::getConnexion();
 

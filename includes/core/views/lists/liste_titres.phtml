@@ -22,7 +22,10 @@
 				<th colspan="2">Actions</th>
 				</thead>
 				<caption>
-					<a href="index.php?page=titre&action=add">Ajouter un titre</a>
+					<?php if ($enableActions): ?>
+						<a href="index.php?page=titre&action=add">Ajouter un titre</a>
+					<?php endif; ?>
+
 				</caption>
 				<tbody>
 				<?php
@@ -32,8 +35,11 @@
 						$script .= '<td>'.$unTitre->getNom().'</td>';
 						$script .= '<td><a href="index.php?page=referentiel&action=view&id='.$unTitre->getReferentiel()->getId().'">'.$unTitre->getReferentiel()->getNumRncp().'</a></td>';
 						$script .= '<td class="actions">';
-						$script .= '<a href="index.php?page=titre&action=edit&id='.$unTitre->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-						$script .= '<a data-action="deletelink" href="index.php?page=titre&action=delete&id='.$unTitre->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+						if ($enableActions){
+							$script .= '<a href="index.php?page=titre&action=edit&id='.$unTitre->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+							$script .= '<a data-action="deletelink" href="index.php?page=titre&action=delete&id='.$unTitre->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+						}
+
 						$script .= '</td>';
 						$script .= '</tr>';
 					}

@@ -18,14 +18,21 @@
 			break;
 		}
 		case 'edit':{
-
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 		case 'delete':{
-		
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			require_once "includes/core/models/DAO/DAOTitre.php";
 			require_once "includes/core/models/DAO/DAOReferentiel.php";
 
@@ -51,6 +58,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

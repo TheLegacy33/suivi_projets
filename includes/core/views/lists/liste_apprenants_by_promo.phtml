@@ -23,7 +23,9 @@
 					<th colspan="2">Actions</th>
 				</thead>
 				<caption>
-					<a href="index.php?page=apprenant&action=add&idpromo=<?= $idPromo ?>">Ajouter un apprenant</a>
+					<?php if ($enableActions): ?>
+						<a href="index.php?page=apprenant&action=add&idpromo=<?= $idPromo ?>">Ajouter un apprenant</a>
+					<?php endif; ?>
 				</caption>
 				<tbody>
 					<?php
@@ -34,8 +36,10 @@
 							$script .= '<td>'.$unApprenant->getPrenom().'</td>';
 							$script .= '<td>'.$unApprenant->getEmail().'</td>';
 							$script .= '<td class="actions">';
-							$script .= '<a title="Modifier" href="index.php?page=apprenant&action=edit&id='.$unApprenant->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
-							$script .= '<a title="Supprimer" data-action="deletelink" href="index.php?page=apprenant&action=delete&id='.$unApprenant->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							if ($enableActions){
+								$script .= '<a title="Modifier" href="index.php?page=apprenant&action=edit&id='.$unApprenant->getId().'"><img src="./public/medias/edit_blue.png" alt="modifier"></a>';
+								$script .= '<a title="Supprimer" data-action="deletelink" href="index.php?page=apprenant&action=delete&id='.$unApprenant->getId().'"><img src="./public/medias/delete_blue.png" alt="modifier"></a>';
+							}
 							$script .= '<a title="Ses projets" href="index.php?page=projet&action=list&idapprenant='.$unApprenant->getId().'"><img src="./public/medias/projet_blue.png" alt="voir les apprenants"></a>';
 							$script .= '</td>';
 							$script .= '</tr>';

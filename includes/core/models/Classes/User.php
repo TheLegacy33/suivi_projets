@@ -2,20 +2,17 @@
 	class User{
 		private int $id;
 		private string $login, $password;
-		private bool $authentified;
 
 		private Apprenant | Intervenant | null $personne;
 
 		/**
 		 * @param string $login
 		 * @param string $password
-		 * @param bool   $authentified
 		 */
-		public function __construct(string $login, string $password = '', bool $authentified = false){
+		public function __construct(string $login, string $password = ''){
 			$this->id = 0;
 			$this->login = $login;
 			$this->password = $password;
-			$this->authentified = $authentified;
 			$this->personne = null;
 		}
 
@@ -59,20 +56,6 @@
 		 */
 		public function setPassword(string $password): void{
 			$this->password = $password;
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function isAuthentified(): bool{
-			return $this->authentified;
-		}
-
-		/**
-		 * @param bool $authentified
-		 */
-		public function setAuthentified(bool $authentified): void{
-			$this->authentified = $authentified;
 		}
 
 		/**

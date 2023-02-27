@@ -261,7 +261,8 @@ table tbody tr td {
   border: solid 1px black;
   padding: 0.2rem;
   vertical-align: middle;
-  line-height: 20px;
+  line-height: 2.3rem;
+  min-height: 2.3rem;
 }
 table tbody tr td img.mini {
   max-height: 16px;

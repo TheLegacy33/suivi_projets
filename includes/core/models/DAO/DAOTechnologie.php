@@ -1,7 +1,7 @@
 <?php
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Technologie.php";
-	class DAOTechnologie extends BDD{
+	abstract class DAOTechnologie extends BDD{
 
 		public static function getAll(): array{
 			$conn = parent::getConnexion();

@@ -2,12 +2,16 @@
 	session_name(APP_NAME);
 	session_start();
 	Session::initialise(APP_NAME);
-
+//	Session::destroy();
 	ini_set('display_errors', 'on');
-	var_dump(Session::getActiveSession());
+//	var_dump(Session::getActiveSession());
 //	var_dump(password_hash('sat@niKm', PASSWORD_BCRYPT));
 	$page = $_GET['page'] ?? 'index';
 	$action = $_GET['action'] ?? 'view';
+
+	require_once "includes/core/models/DAO/DAOUser.php";
+	$enableActions = Session::getActiveSession()->isUserLogged() && (DAOUser::getRoleByUserId(Session::getActiveSession()->getUserId()) == Intervenant::class);
+
 	switch ($page){
 		case 'index':{
 			require_once "includes/core/controllers/controller_index.php";

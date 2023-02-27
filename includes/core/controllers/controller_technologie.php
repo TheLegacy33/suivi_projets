@@ -22,6 +22,9 @@
 		}
 
 		case 'addtoproject':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idProjet = $_GET['idprojet'] ?? 0;
 			$unProjet = DAOProjet::getById($idProjet);
 			$unApprenant = DAOApprenant::getById($unProjet->getIdApprenant());
@@ -49,11 +52,16 @@
 		}
 
 		case 'edit':{
-
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 
 		case 'removefromproject':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			$idTechnologie = $_GET['idtechnologie'] ?? 0;
 			$idProjet = $_GET['idprojet'] ?? 0;
 			$uneTechnologie = DAOTechnologie::getById(intval($idTechnologie));
@@ -66,6 +74,7 @@
 		}
 
 		default: {
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

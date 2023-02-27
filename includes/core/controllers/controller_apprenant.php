@@ -32,14 +32,22 @@
 			break;
 		}
 		case 'edit':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 
 			break;
 		}
 		case 'delete':{
-		
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			break;
 		}
 		case 'add':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
 			if (empty($_POST)){
 				// J'arrive sur le formulaire
 				$unePersonne = new Apprenant();
@@ -73,6 +81,7 @@
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

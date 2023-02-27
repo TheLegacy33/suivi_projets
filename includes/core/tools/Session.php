@@ -1,19 +1,22 @@
 <?php
 	class Session{
 		private string $id, $name;
-		private ?User $user;
+		private int $userId;
+		private bool $userLogged;
 
 		private static Session $activeSession;
+
 		/**
 		 * @param string $id
 		 * @param string $name
-		 * @param ?User   $user
+		 * @param int    $userId
 		 */
-		public function __construct(string $id, string $name, ?User $user = null){
+		public function __construct(string $id, string $name, int $userId = 0){
 			$this->id = $id;
 			$this->name = $name;
-			$this->user = $user;
+			$this->userId = $userId;
 			$_SESSION[$name] = $this;
+			$this->userLogged = false;
 		}
 
 		/**
@@ -45,24 +48,37 @@
 		}
 
 		/**
-		 * @return User
+		 * @param int $userId
 		 */
-		public function getUser(): ?User{
-			return $this->user ?? null;
+		public function setUserId(int $userId): void{
+			$this->userId = $userId;
+			$this->userLogged = true;
 		}
 
 		/**
-		 * @param User $user
+		 * @return int
 		 */
-		public function setUser(User $user): void{
-			$this->user = $user;
+		public function getUserId(): int{
+			return $this->userId;
+		}
+
+		/**
+		 * @param bool $userLogged
+		 */
+		public function setUserLogged(bool $userLogged): void{
+			$this->userLogged = $userLogged;
+		}
+
+		/**
+		 * @return bool
+		 */
+		public function isUserLogged(): bool{
+			return $this->userLogged;
 		}
 
 		public static function initialise(string $appName): void{
 			if (session_status() == PHP_SESSION_NONE || empty($_SESSION)){
-
 				self::$activeSession = new Session(session_create_id(), $appName);
-				self::$activeSession->setUser(new User(''));
 			}else{
 				self::$activeSession = $_SESSION[$appName];
 			}

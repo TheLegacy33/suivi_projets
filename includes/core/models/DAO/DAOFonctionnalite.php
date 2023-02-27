@@ -1,7 +1,7 @@
 <?php
 	require_once "includes/core/models/DAO/BDD.php";
 	require_once "includes/core/models/Classes/Fonctionnalite.php";
-	class DAOFonctionnalite extends BDD{
+	abstract class DAOFonctionnalite extends BDD{
 		public static function getAllByIdProjet(int $idProjet): array{
 			$conn = parent::getConnexion();
 

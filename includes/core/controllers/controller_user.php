@@ -16,7 +16,7 @@
 				if (DAOUSer::userExists($loginSaisi)){
 					print('Mon login existe :-)');
 					if (DAOUSer::checkAuth($loginSaisi, $mdpSaisi)){
-						Session::getActiveSession()->setUser(DAOUser::getFullUserInfosByLogin($loginSaisi));
+						Session::getActiveSession()->setUserId(DAOUser::getIdByLogin($loginSaisi));
 						header('Location: index.php');
 					}else{
 						$message = "Mauvaises informations d'identification !";
@@ -30,13 +30,29 @@
 			break;
 		}
 		case 'logout':{
-			if (isset($_SESSION['user'])){
-				unset($_SESSION['user']);
+			if (Session::getActiveSession()->isUserLogged()){
+				Session::destroy();
+			}
+			header('Location: index.php');
+			break;
+		}
+
+		case 'setallpasswords':{
+			if (!$enableActions){
+				header('Location: index.php');
+			}
+			$lesUsers = DAOUSer::getAll();
+			foreach ($lesUsers as $unUser){
+				if (trim($unUser->getPassword()) == ''){
+					$unUser->setPassword(password_hash($unUser->getLogin(), PASSWORD_BCRYPT));
+				}
+				DAOUser::update($unUser);
 			}
 			header('Location: index.php');
 			break;
 		}
 		default:{
-
+			$action = 'view';
+			require_once "includes/core/controllers/controller_error.php";
 		}
 	}

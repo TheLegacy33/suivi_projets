@@ -291,7 +291,7 @@ DROP TABLE IF EXISTS `personne`;
 CREATE TABLE `personne` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL,
+  `mdp` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -302,7 +302,7 @@ CREATE TABLE `personne` (
 
 LOCK TABLES `personne` WRITE;
 /*!40000 ALTER TABLE `personne` DISABLE KEYS */;
-INSERT INTO `personne` VALUES (1,'c.agbangla',''),(2,'t.altaber',''),(3,'j.attali',''),(4,'b.ballet',''),(5,'b.david',''),(6,'m.durand',''),(7,'s.emonts',''),(8,'j.guinard',''),(9,'m.hugon',''),(10,'f.limlahi',''),(11,'o.loorius',''),(12,'a.marzouk',''),(13,'y.tartary',''),(14,'l.viana',''),(15,'m.gillet',''),(16,'k.godet',''),(17,'a.zourgani',''),(18,'t.darros','');
+INSERT INTO `personne` VALUES (1,'c.agbangla',''),(2,'t.altaber',''),(3,'j.attali',''),(4,'b.ballet',''),(5,'b.david',''),(6,'m.durand',''),(7,'s.emonts',''),(8,'j.guinard',''),(9,'m.hugon',''),(10,'f.limlahi',''),(11,'o.loorius',''),(12,'a.marzouk',''),(13,'y.tartary',''),(14,'l.viana',''),(15,'m.gillet','$2y$10$BWUZrnDBENpf4FF.nUaLLegGe7LzN.fT30M3JrjiH5jDtS4iz0giC'),(16,'k.godet',''),(17,'a.zourgani',''),(18,'t.darros','');
 /*!40000 ALTER TABLE `personne` ENABLE KEYS */;
 UNLOCK TABLES;
 
