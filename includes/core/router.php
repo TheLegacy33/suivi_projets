@@ -4,7 +4,7 @@
 	Session::initialise(APP_NAME);
 //	Session::destroy();
 	ini_set('display_errors', 'on');
-//	var_dump(Session::getActiveSession());
+	var_dump(PHP_DIR);
 //	var_dump(password_hash('sat@niKm', PASSWORD_BCRYPT));
 	$page = $_GET['page'] ?? 'index';
 	$action = $_GET['action'] ?? 'view';

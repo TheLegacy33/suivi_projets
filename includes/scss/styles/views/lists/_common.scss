@@ -34,8 +34,13 @@ table{
 				border: solid 1px black;
 				padding: .2rem;
 				vertical-align: middle;
-				line-height: 2.3rem;
-				min-height: 2.3rem;
+				line-height: 2rem;
+				a{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+				}
 
 				img{
 					&.mini{
@@ -50,7 +55,6 @@ table{
 					display: flex;
 					align-items: center;
 					justify-content: space-around;
-					padding-top: 0.5rem;
 					img{
 						width: 2rem;
 						height: auto;
