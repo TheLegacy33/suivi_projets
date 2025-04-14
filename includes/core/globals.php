@@ -1,3 +1,3 @@
 <?php
-	const ECOLE = '3WA';
-	const APP_NAME = '3WAPRJ';
+	const ECOLE = 'NV';
+	const APP_NAME = 'SUIVI_PROJET';

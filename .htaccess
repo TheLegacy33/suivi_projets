@@ -1,6 +1,0 @@
-SetEnv MYSQL_HOST localhost
-SetEnv MYSQL_PORT 3306
-SetEnv MYSQL_BDD suivi_projets
-SetEnv MYSQL_USER root
-SetEnv MYSQL_PASS @dmDev@tom
-Options -Indexes
